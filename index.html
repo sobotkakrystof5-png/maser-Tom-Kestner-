@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masáž Mladá Boleslav — Tomáš Kestner | Metoda najdi a povol</title>
+  <meta name="description" content="Masáž Mladá Boleslav — Tomáš Kestner, 20 let praxe, 7 let u FK Mladá Boleslav. Klasické, lymfatické masáže, baňkování, taping. Objednejte se.">
+
+  <!-- TODO: nahradit finální doménou při nasazení (canonical, og:url, og:image) -->
+  <link rel="canonical" href="https://www.example.com/">
+
+  <meta property="og:title" content="Masáž Mladá Boleslav — Tomáš Kestner">
+  <meta property="og:description" content="20 let praxe, 7 let u FK Mladá Boleslav. Vlastní technika „najdi a povol" na spazmy a triggerpointy.">
+  <meta property="og:image" content="https://www.example.com/og-image.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="cs_CZ">
+  <meta property="og:url" content="https://www.example.com/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Neblokující načtení webfontů: fallback stack z stylů.css se ukáže
+       hned, Google Fonts CSS se aplikuje asynchronně po načtení. -->
+  <link
+    rel="preload"
+    as="style"
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'"
+  >
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap">
+  </noscript>
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthAndBeautyBusiness",
+    "name": "Tomáš Kestner — Masáže",
+    "url": "https://www.example.com/",
+    "image": "https://www.example.com/og-image.jpg",
+    "telephone": "+420603486737",
+    "email": "tomas.kestner@seznam.cz",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Na Radouči 1042",
+      "addressLocality": "Mladá Boleslav",
+      "postalCode": "293 01",
+      "addressCountry": "CZ"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#hlavni-obsah">Přeskočit na hlavní obsah</a>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-nav" id="site-nav">
+    <div class="container site-nav__inner">
+      <a class="site-nav__logo" href="#hero" aria-label="Tomáš Kestner — masáže, úvod stránky">
+        <img src="assets/icons/favicon.svg" alt="" width="36" height="36" class="site-nav__mark">
+        <span>Tomáš Kestner</span>
+      </a>
+
+      <button
+        class="site-nav__toggle"
+        id="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+      >
+        <span class="sr-only">Otevřít menu</span>
+        <span class="site-nav__toggle-icon" aria-hidden="true"></span>
+      </button>
+
+      <nav aria-label="Hlavní navigace" class="site-nav__nav">
+        <ul class="site-nav__menu" id="nav-menu">
+          <li><a href="#filozofie">Filozofie</a></li>
+          <li><a href="#o-mne">O mně</a></li>
+          <li><a href="#sluzby-cenik">Služby a ceník</a></li>
+          <li><a href="#reference">Reference</a></li>
+          <li><a href="#galerie">Galerie</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+          <li class="site-nav__menu-cta">
+            <a class="btn btn-primary" href="tel:+420603486737">Zavolat · 603 486 737</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="hlavni-obsah">
+    <section id="hero" class="hero">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="section-eyebrow">Mladá Boleslav · Od 2004</p>
+          <h1>Najdu a povolím blokádu. Technikou ověřenou 7 let u profi fotbalistů FK Mladá Boleslav.</h1>
+          <p class="hero__subtitle">
+            Vlastní trakční tlaková technika „najdi a povol" — cílená na
+            spazmy, triggerpointy a zkrácené svaly. Ne relaxační procedura,
+            ale řešení příčiny.
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn-primary" href="tel:+420603486737">
+              Objednat masáž · 603 486 737
+            </a>
+            <a class="btn btn-secondary" href="#filozofie">
+              Jak metoda funguje
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__media">
+          <!-- TODO: nahradit reálnou fotkou Tomáše při práci (technika "najdi a povol"),
+               min. šířka 1200px, poměr stran cca 4:3, formát WebP + JPG fallback -->
+          <img
+            src="assets/img/placeholder-hero.svg"
+            alt="Tomáš Kestner provádí masáž technikou najdi a povol — fotka bude doplněna"
+            width="1200"
+            height="900"
+            class="img-cover"
+          >
+        </div>
+      </div>
+    </section>
+
+    <section id="filozofie" class="filozofie">
+      <div class="container">
+        <h2 class="section-heading">Metoda najdi a povol</h2>
+        <p class="filozofie__intro">
+          Tlak najde přesný bod, trakce ho drží v napětí, dokud sval
+          nepovolí. Žádné plošné hnětení pro chvilkový pocit uvolnění —
+          cílená práce na konkrétní spazmus nebo triggerpoint, dokud
+          skutečně nezmizí.
+        </p>
+
+        <ol class="process">
+          <li class="process__step">
+            <span class="process__num" aria-hidden="true">01</span>
+            <h3>Najdu blokádu</h3>
+            <p>Palpací najdu přesný triggerpoint nebo zkrácený sval, který omezuje pohyb.</p>
+          </li>
+          <li class="process__step">
+            <span class="process__num" aria-hidden="true">02</span>
+            <h3>Uvolním trakcí</h3>
+            <p>Kombinace trakčně-tlakové techniky a měkkých technik podle toho, co tělo potřebuje.</p>
+          </li>
+          <li class="process__step">
+            <span class="process__num" aria-hidden="true">03</span>
+            <h3>Ušiju na míru</h3>
+            <p>Intenzitu a přístup přizpůsobím konkrétnímu tělu, ne šabloně z učebnice.</p>
+          </li>
+        </ol>
+
+        <div class="filozofie__cta">
+          <a class="btn btn-secondary" href="#kontakt">Vyzkoušet na vlastní kůži</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="o-mne" class="o-mne">
+      <div class="container o-mne__inner">
+        <div class="o-mne__content">
+          <h2 class="section-heading">O mně</h2>
+          <p>
+            Masérství dělám od roku 2004 — začínal jsem klasickými
+            technikami, dnes stavím na vlastní metodě, kterou jsem si
+            vybrousil na profesionálních sportovcích. Sedm let jsem se
+            staral o hráče FK Mladá Boleslav, kde jsem se naučil pracovat
+            rychle a přesně — profesionální fotbalista nemá čas na týden
+            regenerace, potřebuje být zpátky na hřišti hned. Dnes tuhle
+            zkušenost přenáším do praxe pro každého, kdo přijde s bolestí
+            zad, ramen nebo zkráceným svalem. Baví mě najít přesně to
+            místo, které jinde přehlédnou, a rovnou ho vyřešit.
+          </p>
+
+          <ul class="timeline">
+            <li class="timeline__item">
+              <span class="timeline__year">2004</span>
+              <span class="timeline__label">Začátek praxe, první certifikace</span>
+            </li>
+            <li class="timeline__item">
+              <span class="timeline__year">7 let</span>
+              <span class="timeline__label">Masér FK Mladá Boleslav</span>
+            </li>
+            <li class="timeline__item">
+              <span class="timeline__year">—</span>
+              <span class="timeline__label">Lektor rekvalifikačních masérských kurzů (ESF)</span>
+            </li>
+            <li class="timeline__item">
+              <span class="timeline__year">—</span>
+              <span class="timeline__label">Masáže pro firmy (např. Linet)</span>
+            </li>
+            <li class="timeline__item">
+              <span class="timeline__year">12+ let</span>
+              <span class="timeline__label">Soukromá praxe</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="o-mne__media">
+          <!-- TODO: nahradit reálným portrétem Tomáše Kestnera,
+               min. šířka 900px, poměr stran cca 3:4 -->
+          <img
+            src="assets/img/placeholder-portrait.svg"
+            alt="Portrét Tomáše Kestnera — fotka bude doplněna"
+            width="900"
+            height="1200"
+            loading="lazy"
+            class="img-cover"
+          >
+        </div>
+      </div>
+    </section>
+
+    <section id="sluzby-cenik" class="sluzby">
+      <div class="container">
+        <h2 class="section-heading">Služby a ceník</h2>
+
+        <ul class="services-grid">
+          <li>
+            <article class="service-card">
+              <h3>Klasické masáže</h3>
+              <p>Uvolnění ztuhlých zad a ramen po dlouhém sezení u počítače.</p>
+              <!-- TODO: cena k doplnění od klienta -->
+              <p class="service-card__price">Cena na dotaz</p>
+              <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+            </article>
+          </li>
+          <li>
+            <article class="service-card">
+              <h3>Lymfatické masáže</h3>
+              <p>Úleva od otoklých kotníků a těžkých nohou.</p>
+              <!-- TODO: cena k doplnění od klienta -->
+              <p class="service-card__price">Cena na dotaz</p>
+              <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+            </article>
+          </li>
+          <li>
+            <article class="service-card">
+              <h3>Reflexní terapie</h3>
+              <p>Cílená práce na konkrétní bod, ne celé tělo najednou.</p>
+              <!-- TODO: cena k doplnění od klienta -->
+              <p class="service-card__price">Cena na dotaz</p>
+              <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+            </article>
+          </li>
+          <li>
+            <article class="service-card">
+              <h3>Měkké a trakční techniky</h3>
+              <p>Šetrné uvolnění pro citlivá místa a čerstvá zranění.</p>
+              <!-- TODO: cena k doplnění od klienta -->
+              <p class="service-card__price">Cena na dotaz</p>
+              <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+            </article>
+          </li>
+          <li>
+            <article class="service-card">
+              <h3>Taping, kineziotaping, crosstaping</h3>
+              <p>Podpora svalu nebo kloubu, která vydrží i při tréninku.</p>
+              <!-- TODO: cena k doplnění od klienta -->
+              <p class="service-card__price">Cena na dotaz</p>
+              <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+            </article>
+          </li>
+          <li>
+            <article class="service-card">
+              <h3>Baňkování</h3>
+              <p>Prokrvení a uvolnění hlubokých svalových vrstev.</p>
+              <!-- TODO: cena k doplnění od klienta -->
+              <p class="service-card__price">Cena na dotaz</p>
+              <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+            </article>
+          </li>
+          <li>
+            <article class="service-card service-card--featured">
+              <span class="service-card__badge">Čt + Pá</span>
+              <h3>Partnerské masáže</h3>
+              <p>Masáž ve dvou, vedle sebe, jako společný zážitek.</p>
+              <p class="service-card__price">1900 Kč / 60 minut</p>
+              <a class="service-card__cta" href="tel:+420603486737">Objednat →</a>
+            </article>
+          </li>
+        </ul>
+
+        <div class="voucher-cta">
+          <div>
+            <h3>Dárkový poukaz</h3>
+            <p>V libovolné hodnotě — ideální dárek, který si vybere sám.</p>
+          </div>
+          <a class="btn btn-primary" href="tel:+420603486737">Zeptat se na poukaz</a>
+        </div>
+      </div>
+    </section>
+
+    <!--
+      TODO: Až Tomáš dodá reálné reference od klientů (přesné znění citace +
+      jméno/iniciála příjmení dle souhlasu s GDPR), nahradit tuto sekci
+      citacemi podle .claude/skills/reference/SKILL.md. Do té doby stojí
+      sekce jen na ověřitelných faktech z CLAUDE.md — žádná citace ani
+      hodnocení klienta není vymyšlené.
+    -->
+    <section id="reference" class="zkusenosti">
+      <div class="container">
+        <h2 class="section-heading">Zkušenosti</h2>
+        <p class="zkusenosti__intro">
+          Recenze klientů zatím sbíráme. Než tu budou, mluví za Tomáše
+          aspoň tahle fakta.
+        </p>
+
+        <ul class="stats-grid">
+          <li>
+            <article class="stat-card">
+              <span class="stat-card__value">7 let</span>
+              <span class="stat-card__label">Masér FK Mladá Boleslav — profesionální fotbalový klub</span>
+            </article>
+          </li>
+          <li>
+            <article class="stat-card">
+              <span class="stat-card__value">12+ let</span>
+              <span class="stat-card__label">Soukromá praxe</span>
+            </article>
+          </li>
+          <li>
+            <article class="stat-card">
+              <span class="stat-card__value">Od 2004</span>
+              <span class="stat-card__label">V oboru masérství</span>
+            </article>
+          </li>
+          <li>
+            <article class="stat-card">
+              <span class="stat-card__value">Lektor</span>
+              <span class="stat-card__label">Rekvalifikačních masérských kurzů (ESF)</span>
+            </article>
+          </li>
+          <li>
+            <article class="stat-card">
+              <span class="stat-card__value">Firmy</span>
+              <span class="stat-card__label">Masáže pro firmy, např. Linet</span>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- TODO: nahradit všechny dlaždice reálnými fotkami provozovny a práce
+         Tomáše — min. šířka 1200px, formát 4:3 nebo 1:1, WebP + JPG fallback.
+         Zjednodušení: dlaždice teď používají prostý <img src="*.svg">, protože
+         jde o vektorové zástupné grafiky (WebP/JPG fallback pro ně nedává
+         smysl). Až přibudou reálné fotky, nahraď <img> za <picture> se
+         <source type="image/webp"> + JPG fallback dle .claude/skills/galerie. -->
+    <section id="galerie" class="galerie">
+      <div class="container">
+        <h2 class="section-heading">Galerie</h2>
+        <p class="galerie__intro">
+          Provozovna a technika „najdi a povol" v akci — bez stock fotek,
+          jen reálné prostředí.
+        </p>
+
+        <ul class="gallery-grid">
+          <li>
+            <button class="gallery-item" type="button" aria-label="Zvětšit fotku: provozovna Na Radouči 1042">
+              <img src="assets/img/placeholder-square.svg" alt="Provozovna Na Radouči 1042 — fotka bude doplněna" width="1200" height="1200" class="img-cover">
+            </button>
+          </li>
+          <li>
+            <button class="gallery-item" type="button" aria-label="Zvětšit fotku: technika najdi a povol v akci">
+              <img src="assets/img/placeholder-square.svg" alt="Tomáš Kestner při technice najdi a povol — fotka bude doplněna" width="1200" height="1200" class="img-cover">
+            </button>
+          </li>
+          <li>
+            <button class="gallery-item" type="button" aria-label="Zvětšit fotku: kineziotaping">
+              <img src="assets/img/placeholder-square.svg" alt="Aplikace kineziotapingu — fotka bude doplněna" width="1200" height="1200" loading="lazy" class="img-cover">
+            </button>
+          </li>
+          <li>
+            <button class="gallery-item" type="button" aria-label="Zvětšit fotku: baňkování">
+              <img src="assets/img/placeholder-square.svg" alt="Baňkování při masáži — fotka bude doplněna" width="1200" height="1200" loading="lazy" class="img-cover">
+            </button>
+          </li>
+          <li>
+            <button class="gallery-item" type="button" aria-label="Zvětšit fotku: vybavení provozovny">
+              <img src="assets/img/placeholder-square.svg" alt="Masérský stůl a vybavení provozovny — fotka bude doplněna" width="1200" height="1200" loading="lazy" class="img-cover">
+            </button>
+          </li>
+          <li>
+            <button class="gallery-item" type="button" aria-label="Zvětšit fotku: čekárna provozovny">
+              <img src="assets/img/placeholder-square.svg" alt="Čekárna provozovny Na Radouči 1042 — fotka bude doplněna" width="1200" height="1200" loading="lazy" class="img-cover">
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <dialog id="lightbox" class="lightbox" aria-label="Prohlížeč fotek galerie">
+        <button id="lightbox-close" class="lightbox__close" type="button" aria-label="Zavřít prohlížeč">✕</button>
+        <button id="lightbox-prev" class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Předchozí fotka">‹</button>
+        <img id="lightbox-img" src="" alt="" class="lightbox__img">
+        <button id="lightbox-next" class="lightbox__nav lightbox__nav--next" type="button" aria-label="Následující fotka">›</button>
+      </dialog>
+    </section>
+
+    <section class="final-cta">
+      <div class="container final-cta__inner">
+        <h2>Bolest nepočká. Zavolejte ještě dnes.</h2>
+        <a class="btn btn-primary btn-large" href="tel:+420603486737">Objednat masáž · 603 486 737</a>
+      </div>
+    </section>
+
+    <section id="kontakt" class="kontakt">
+      <div class="container kontakt__inner">
+        <div class="kontakt__info">
+          <h2 class="section-heading">Kde mě najdete</h2>
+
+          <address>
+            Na Radouči 1042<br>
+            293 01 Mladá Boleslav
+          </address>
+
+          <!-- TODO: otevírací doba k doplnění od klienta — dokud není
+               potvrzená, neuvádět a nedávat do JSON-LD (viz seo-technicke) -->
+          <p class="kontakt__hours-note">Termín domlouváme individuálně po telefonu.</p>
+
+          <div class="kontakt__direct-cta">
+            <a class="btn btn-primary" href="tel:+420603486737">Zavolat · 603 486 737</a>
+            <a class="btn btn-secondary" href="mailto:tomas.kestner@seznam.cz">Napsat e-mail</a>
+          </div>
+
+          <!-- Embed bez API klíče (Google Maps "q=" formát) — pokud bude
+               potřeba oficiální Maps Embed API s klíčem, upravit zde. -->
+          <div class="kontakt__map">
+            <iframe
+              src="https://www.google.com/maps?q=Na+Radou%C4%8Di+1042,+293+01+Mlad%C3%A1+Boleslav&output=embed"
+              loading="lazy"
+              title="Mapa — Na Radouči 1042, Mladá Boleslav"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+
+        <div class="kontakt__form-wrap">
+          <h3>Napište mi</h3>
+
+          <!-- TODO: formulář zatím nemá zvolený backend pro statický hosting
+               (Formspree / Netlify Forms). Než se vybere, JS níže po validaci
+               otevře předvyplněný mailto: — funkční už dnes, ale vyžaduje
+               krok navíc od uživatele. Po výběru hostingu nahradit za
+               skutečné odeslání (fetch POST na endpoint backendu). -->
+          <form id="contact-form" class="contact-form" novalidate>
+            <label for="cf-name">Jméno</label>
+            <input type="text" id="cf-name" name="name" required autocomplete="name">
+
+            <label for="cf-email">E-mail</label>
+            <input type="email" id="cf-email" name="email" required autocomplete="email">
+
+            <label for="cf-phone">Telefon (nepovinné)</label>
+            <input type="tel" id="cf-phone" name="phone" autocomplete="tel">
+
+            <label for="cf-message">Zpráva</label>
+            <textarea id="cf-message" name="message" rows="4" required></textarea>
+
+            <p class="contact-form__status" id="contact-form-status" role="status" aria-live="polite"></p>
+
+            <button class="btn btn-primary btn-block" type="submit">Odeslat zprávu</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div>
+        <p class="site-footer__brand">Tomáš Kestner — Masáže</p>
+        <address>Na Radouči 1042, 293 01 Mladá Boleslav</address>
+        <p>
+          <a href="tel:+420603486737">603 486 737</a> ·
+          <a href="mailto:tomas.kestner@seznam.cz">tomas.kestner@seznam.cz</a>
+        </p>
+      </div>
+      <div class="site-footer__legal">
+        <p>IČ: 71037845</p>
+        <p>© <span id="footer-year">2026</span> Tomáš Kestner. Všechna práva vyhrazena.</p>
+        <p><a href="sitemap.xml">Mapa webu (sitemap.xml)</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="sticky-cta" id="sticky-cta">
+    <a class="btn btn-primary btn-block" href="tel:+420603486737">Zavolat</a>
+    <a class="btn btn-secondary btn-block" href="mailto:tomas.kestner@seznam.cz">Napsat</a>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
