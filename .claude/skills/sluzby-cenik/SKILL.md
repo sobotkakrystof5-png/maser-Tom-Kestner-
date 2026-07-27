@@ -22,12 +22,27 @@ Nabídka:
 - Baňkování
 - Partnerské masáže
 
-Ceny — **jediná potvrzená cena**:
+Ceny — **potvrzené**:
 - Partnerské masáže: **1900 Kč / 60 minut**, pouze čtvrtek a pátek (uvést časové
   omezení viditelně u ceny, ne jako drobné písmo)
+- Klasické masáže, lymfatické masáže, reflexní terapie, měkké a trakční
+  techniky, baňkování: **1000 Kč / 25 minut** (běžná sazba cca 35-40 Kč/min,
+  paušál platí stejně napříč těmito technikami — potvrzeno klientem 2026-07-21)
+- Taping, kineziotaping, crosstaping: cena zatím nepotvrzena, zůstává
+  "cena na dotaz" (jiný ceníkový model než časový paušál výše)
 
 Dárkové poukazy v libovolné hodnotě (zmínit jako samostatnou položku/CTA, ne
 schované v seznamu služeb).
+
+Ověřené benefity jednotlivých služeb (zdroj pravdy, upřesnění klienta
+2026-07-21 — viz claude.md):
+- **Lymfatická masáž** = ruční lymfodrenáž. Úleva od otoků končetin různého
+  původu a pocitu těžkých nohou, zlepšuje výkonnost sportovců až o 10 %,
+  prospěšná při celulitidě. NIKDY neuvádět úlevu od otoků kotníků — klient
+  toto tvrzení výslovně označil za nepravdivé.
+- **Reflexní terapie** — princip: tlak na reflexní bod (např. na chodidle)
+  ovlivní jiné místo/orgán v těle; vychází ze starobylé čínské nauky o
+  akupunkturních bodech.
 
 Pro všechny ostatní služby **nevymýšlet konkrétní ceny**. Pokud ceník není
 kompletně dodaný klientem, každá chybějící cena musí být `<!-- TODO: nahradit
@@ -58,7 +73,8 @@ reálným obsahem --><!-- cena k doplnění od klienta -->` a v UI viditelně ja
 - Partnerská masáž může mít vizuální odlišení formou badge ("Čt + Pá") — funkční
   vzor pro zvýraznění omezené dostupnosti, ne jen text v popisku.
 - Vzorový příklad benefit-copy (k čemu služba pomáhá, ne jen definice):
-  lymfatická masáž → "úleva od otoklých kotníků a těžkých nohou", ne jen "detoxikace".
+  lymfatická masáž → "úleva od otoků a těžkých nohou, sportovcům zvedá výkon
+  až o 10 %", ne jen "detoxikace" a nikdy ne "otoky kotníků" (viz Fakta výše).
 
 ## Checklist před dokončením sekce
 

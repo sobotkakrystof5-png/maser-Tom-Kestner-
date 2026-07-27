@@ -12,7 +12,9 @@ si má po přečtení myslet: "tenhle člověk ví, co dělá, a dělal to pro p
 
 ## Fakta (zdroj pravdy — nevymýšlet nic navíc, viz CLAUDE.md)
 
-- Tomáš Kestner, v oboru od 2004, 12+ let soukromé praxe
+- Tomáš Kestner, v oboru od 2004 (20+ let praxe) — soukromé klienty vedl
+  souběžně s prací u FK Mladá Boleslav, ne až po ní (neprezentovat jako dvě fáze
+  kariéry za sebou)
 - 7 let masér profesionálního fotbalového klubu FK Mladá Boleslav
 - Lektor rekvalifikačních masérských kurzů (ESF)
 - Masáže pro firmy (např. Linet)
@@ -40,8 +42,9 @@ rámec výše uvedeného.
 - Doporučená otevírací kompozice: krátký osobní odstavec (3–4 věty, 1. osoba) —
   cesta k masérství, co Tomáše na oboru baví — před samotnou timeline faktů.
 - Fakta lze prezentovat jako mini-timeline s roky, ne jen plochý seznam, např.:
-  2004 — první certifikát/začátek praxe · 7 let — masér FK Mladá Boleslav ·
-  lektor rekvalifikačních kurzů (ESF) · masáže pro firmy · 12+ let soukromé praxe.
+  2004 — první certifikát/začátek praxe · 7 let — masér FK Mladá Boleslav
+  (souběžně se soukromými klienty, ne po skončení) · lektor rekvalifikačních
+  kurzů (ESF) · masáže pro firmy · 20+ let praxe celkem.
   Timeline může použít energy-flow linku jako spojnici mezi milníky (vizuální
   echo filozofie sekce napříč webem).
 - 1. osoba jednotného čísla důsledně v celém odstavci — starý web chyboval

@@ -61,7 +61,9 @@ Fakta o klientovi (zdroj pravdy — nevymýšlet jiná fakta)
 
 
 
-Tomáš Kestner, v oboru od 2004, 12+ let soukromé praxe
+Tomáš Kestner, v oboru od 2004 (20+ let praxe) — soukromé klienty vedl souběžně
+s prací u FK Mladá Boleslav, ne až po ní (časy se překrývají, nejde o dvě fáze
+kariéry za sebou)
 
 
 
@@ -104,6 +106,31 @@ Tel: 603 486 737 · E-mail: tomas.kestner@seznam.cz · IČ: 71037845
 Chybějící obsah (reálné fotky, konkrétní ceník, reference klientů) označuj jasně jako
 <!-- TODO: nahradit reálným obsahem --> — nikdy si nevymýšlej konkrétní ceny, jména
 klientů ani citace referencí.
+
+Upřesnění klienta (2026-07-21) — doplňuje/opravuje fakta výše, má přednost před
+starší formulací kdekoliv v kódu:
+
+- Technika "najdi a povol" není jedna fixní hmatová technika. Je to kombinace
+  mnohaletých zkušeností a výběru z různých hmatů (trakce, tlak, měkké techniky)
+  podle toho, co konkrétní bolístka potřebuje.
+- Tělo se přirozeně vychyluje z rovnováhy — některé svaly se zkracují, jiné
+  ochabují. Tomáš najde a povolí blok, ale udržet tělo v rovnováze (cvičení,
+  kompenzace) je hlavně úkol klienta, ne jen maséra. Tohle je důležitá součást
+  poselství, ne detail — nastavuje realistické očekávání a odlišuje od "zázračné"
+  jednorázové opravy.
+- Lymfatická masáž = ruční lymfodrenáž. Ověřené benefity: úleva od otoků
+  končetin různého původu a pocitu těžkých nohou, zlepšuje výkonnost sportovců
+  až o 10 %, prospěšná při celulitidě. NIKDY neuvádět úlevu od otoků kotníků
+  jako benefit — klient toto tvrzení výslovně označil za nepravdivé.
+- Reflexní terapie — princip: tlak na reflexní bod (např. na chodidle) ovlivní
+  jiné místo/orgán v těle; vychází ze starobylé čínské nauky o akupunkturních
+  bodech.
+- Ceník: běžná sazba cca 35-40 Kč/minutu, potvrzený paušál **1000 Kč / 25 minut**
+  platí napříč typy terapie (klasické masáže, lymfatické masáže, reflexní
+  terapie, měkké a trakční techniky, baňkování) — nezáleží na konkrétní
+  technice. Potvrzeno 2026-07-21. Taping/kineziotaping/crosstaping a
+  partnerské masáže mají jiný ceníkový model (u tapingu cena zatím
+  nepotvrzena, u partnerských masáží platí 1900 Kč/60 minut beze změny).
 
 Tech stack — pevně dané
 
