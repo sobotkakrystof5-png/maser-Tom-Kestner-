@@ -18,6 +18,37 @@
   update();
 })();
 
+(function scrollReveal() {
+  // Třída na <html> se přidává synchronně hned na startu — dokud neběží
+  // (vypnutý JS, chyba), [data-reveal] prvky v CSS zůstávají plně
+  // viditelné (skrytí platí jen pod .js-reveal-ready), obsah tedy nikdy
+  // nezůstane trvale neviditelný.
+  document.documentElement.classList.add("js-reveal-ready");
+
+  const items = document.querySelectorAll("[data-reveal]");
+  if (!items.length) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    items.forEach((el) => el.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  items.forEach((el) => observer.observe(el));
+})();
+
 (function mobileNav() {
   const toggle = document.getElementById("nav-toggle");
   const menu = document.getElementById("nav-menu");
@@ -58,7 +89,12 @@
 })();
 
 (function galleryLightbox() {
-  const items = Array.from(document.querySelectorAll(".gallery-item"));
+  // Jen dlaždice se skutečnou fotkou (<img>) patří do lightboxu — dlaždice
+  // s .photo-placeholder (čeká na reálnou fotku, viz TODO v HTML) nemají co
+  // zvětšovat, zůstávají neklikatelné .gallery-item--placeholder <div>y.
+  const items = Array.from(document.querySelectorAll(".gallery-item")).filter(
+    (item) => item.querySelector("img")
+  );
   const dialog = document.getElementById("lightbox");
   const imgEl = document.getElementById("lightbox-img");
   const closeBtn = document.getElementById("lightbox-close");
@@ -110,15 +146,22 @@
   const bar = document.getElementById("sticky-cta");
   const hero = document.getElementById("hero");
   const form = document.getElementById("contact-form");
-  if (!bar || !hero) return;
+  if (!bar) return;
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      bar.classList.toggle("is-visible", !entry.isIntersecting);
-    },
-    { rootMargin: "-1px 0px 0px 0px" }
-  );
-  observer.observe(hero);
+  // Na hlavní stránce se lišta zobrazí až po scrollu za hero (ať nekonkuruje
+  // hero CTA). Na podstránkách služeb #hero neexistuje — lišta tam smí být
+  // vidět rovnou, stránka je krátká a jde jen o udržení kontaktní cesty.
+  if (hero) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        bar.classList.toggle("is-visible", !entry.isIntersecting);
+      },
+      { rootMargin: "-1px 0px 0px 0px" }
+    );
+    observer.observe(hero);
+  } else {
+    bar.classList.add("is-visible");
+  }
 
   // Skrýt lištu, dokud uživatel píše do kontaktního formuláře — ať mu
   // nepřekáží nad klávesnicí přes vstupní pole.

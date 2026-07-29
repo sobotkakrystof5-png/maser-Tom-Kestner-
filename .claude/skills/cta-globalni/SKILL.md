@@ -28,8 +28,8 @@ podkopává důvěru a snižuje konverzi — přímo proti byznysovému cíli z 
 
 ## Vizuální pravidla
 
-- CTA tlačítko používá design tokeny z CLAUDE.md — barva akcentu `--lime`/`--coral`,
-  hover stav využívá `--flow-gradient` (signaturní prvek), ne plošně, jen jako
+- CTA tlačítko používá design tokeny z CLAUDE.md — barva akcentu `--accent`,
+  hover stav využívá `--flow-line` (signaturní prvek), ne plošně, jen jako
   akcent/podtržení nebo pozadí samotného tlačítka při hover.
 - Border-radius střídmý (4–8px), konzistentní se zbytkem designu — žádné velké
   kulaté "pilulkové" tlačítko, které by působilo genericky.

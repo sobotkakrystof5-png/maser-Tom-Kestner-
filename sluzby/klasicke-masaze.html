@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klasické masáže Mladá Boleslav — Tomáš Kestner</title>
+  <meta name="description" content="Klasická masáž v Mladé Boleslavi — uvolnění ztuhlých zad a ramen po dlouhém sezení. 1000 Kč / 25 minut. Objednejte se u Tomáše Kestnera.">
+
+  <!-- TODO: nahradit finální doménou při nasazení (canonical, og:url, og:image) -->
+  <link rel="canonical" href="https://www.example.com/sluzby/klasicke-masaze.html">
+
+  <meta property="og:title" content="Klasické masáže — Tomáš Kestner">
+  <meta property="og:description" content="Uvolnění ztuhlých zad a ramen po dlouhém sezení. 1000 Kč / 25 minut.">
+  <meta property="og:image" content="https://www.example.com/og-image.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="cs_CZ">
+  <meta property="og:url" content="https://www.example.com/sluzby/klasicke-masaze.html">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Neblokující načtení webfontů: fallback stack z stylů.css se ukáže
+       hned, Google Fonts CSS se aplikuje asynchronně po načtení. -->
+  <link
+    rel="preload"
+    as="style"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;500;600&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'"
+  >
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;500;600&display=swap">
+  </noscript>
+
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#hlavni-obsah">Přeskočit na hlavní obsah</a>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-nav" id="site-nav">
+    <div class="container site-nav__inner">
+      <a class="site-nav__logo" href="../index.html#hero" aria-label="Tomáš Kestner — masáže, úvod stránky">
+        <span>Tomáš Kestner</span>
+      </a>
+
+      <button
+        class="site-nav__toggle"
+        id="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+      >
+        <span class="sr-only">Otevřít menu</span>
+        <span class="site-nav__toggle-icon" aria-hidden="true"></span>
+      </button>
+
+      <nav aria-label="Hlavní navigace" class="site-nav__nav">
+        <ul class="site-nav__menu" id="nav-menu">
+          <li><a href="../index.html#filozofie">Filozofie</a></li>
+          <li><a href="../index.html#o-mne">O mně</a></li>
+          <li><a href="../index.html#sluzby-cenik">Služby a ceník</a></li>
+          <li>
+            <a class="site-nav__menu-gift" href="../index.html#darkove-poukazy">
+              <svg class="site-nav__gift-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                <rect x="2" y="7" width="20" height="5"></rect>
+                <line x1="12" y1="22" x2="12" y2="7"></line>
+                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+              </svg>
+              Dárkové poukazy
+            </a>
+          </li>
+          <li><a href="../index.html#reference">Reference</a></li>
+          <li><a href="../index.html#galerie">Galerie</a></li>
+          <li><a href="../index.html#kontakt">Kontakt</a></li>
+          <li class="site-nav__menu-cta">
+            <a class="btn btn-primary" href="tel:+420603486737">Zavolat · 603 486 737</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="hlavni-obsah">
+    <section class="sluzba-detail">
+      <div class="container">
+        <p class="section-eyebrow"><a href="../index.html#sluzby-cenik">Služby a ceník</a> · Mladá Boleslav</p>
+        <h1>Klasické masáže</h1>
+
+        <p class="sluzba-detail__intro">
+          Klasická masáž pracuje s povrchovými i hlubšími svalovými vrstvami —
+          hnětením, tlakem a tahem uvolňuje ztuhlé partie a zlepšuje prokrvení.
+        </p>
+        <p class="sluzba-detail__intro">
+          Nejčastěji řeším ztuhlá záda a ramena po dlouhém sezení u počítače
+          nebo za volantem. Pokud jde o konkrétní blok nebo triggerpoint,
+          používám vlastní techniku najdi a povol (víc o ní v sekci
+          <a href="../index.html#filozofie">Filozofie</a> na hlavní stránce).
+        </p>
+
+        <div class="sluzba-detail__media-grid">
+          <!-- TODO: nahradit reálnými fotkami, min. šířka 1200px, poměr 4:3 -->
+          <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: klasická masáž zad">
+            <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+              <circle cx="12" cy="13" r="3.5"></circle>
+            </svg>
+            <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: klasická masáž zad</p>
+          </div>
+          <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: klasická masáž ramen">
+            <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+              <circle cx="12" cy="13" r="3.5"></circle>
+            </svg>
+            <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: klasická masáž ramen</p>
+          </div>
+        </div>
+
+        <div class="sluzba-detail__price-cta">
+          <p class="sluzba-detail__price">1000 Kč / 25 minut</p>
+          <a class="btn btn-primary" href="tel:+420603486737">Objednat · 603 486 737</a>
+        </div>
+
+        <div class="sluzba-detail__back-links">
+          <a href="../index.html#sluzby-cenik">← Zpět na ceník</a>
+          <a href="../index.html#kontakt">Kontakt →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div>
+        <p class="site-footer__brand">Tomáš Kestner — Masáže</p>
+        <address>Na Radouči 1042, 293 01 Mladá Boleslav</address>
+        <p>
+          <a href="tel:+420603486737">603 486 737</a> ·
+          <a href="mailto:tomas.kestner@seznam.cz">tomas.kestner@seznam.cz</a>
+        </p>
+      </div>
+      <div class="site-footer__legal">
+        <p>IČ: 71037845</p>
+        <p>© <span id="footer-year">2026</span> Tomáš Kestner. Všechna práva vyhrazena.</p>
+        <p><a href="../sitemap.xml">Mapa webu (sitemap.xml)</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="sticky-cta" id="sticky-cta">
+    <a class="btn btn-primary btn-block" href="tel:+420603486737">Zavolat</a>
+    <a class="btn btn-secondary btn-block" href="mailto:tomas.kestner@seznam.cz">Napsat</a>
+  </div>
+
+  <script src="../script.js" defer></script>
+</body>
+</html>

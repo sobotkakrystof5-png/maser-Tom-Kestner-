@@ -28,11 +28,11 @@
   <link
     rel="preload"
     as="style"
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;500;600&display=swap"
     onload="this.onload=null;this.rel='stylesheet'"
   >
   <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=Inter:wght@400;500;600&display=swap">
   </noscript>
 
   <link rel="stylesheet" href="styles.css">
@@ -63,7 +63,6 @@
   <header class="site-nav" id="site-nav">
     <div class="container site-nav__inner">
       <a class="site-nav__logo" href="#hero" aria-label="Tomáš Kestner — masáže, úvod stránky">
-        <img src="assets/icons/favicon.svg" alt="" width="36" height="36" class="site-nav__mark">
         <span>Tomáš Kestner</span>
       </a>
 
@@ -83,6 +82,18 @@
           <li><a href="#filozofie">Filozofie</a></li>
           <li><a href="#o-mne">O mně</a></li>
           <li><a href="#sluzby-cenik">Služby a ceník</a></li>
+          <li>
+            <a class="site-nav__menu-gift" href="#darkove-poukazy">
+              <svg class="site-nav__gift-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 12 20 22 4 22 4 12"></polyline>
+                <rect x="2" y="7" width="20" height="5"></rect>
+                <line x1="12" y1="22" x2="12" y2="7"></line>
+                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+              </svg>
+              Dárkové poukazy
+            </a>
+          </li>
           <li><a href="#reference">Reference</a></li>
           <li><a href="#galerie">Galerie</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
@@ -118,13 +129,13 @@
         <div class="hero__media">
           <!-- TODO: nahradit reálnou fotkou Tomáše při práci (technika "najdi a povol"),
                min. šířka 1200px, poměr stran cca 4:3, formát WebP + JPG fallback -->
-          <img
-            src="assets/img/placeholder-hero.svg"
-            alt="Tomáš Kestner provádí masáž technikou najdi a povol — fotka bude doplněna"
-            width="1200"
-            height="900"
-            class="img-cover"
-          >
+          <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: Tomáš Kestner při technice najdi a povol v akci">
+            <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+              <circle cx="12" cy="13" r="3.5"></circle>
+            </svg>
+            <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: Tomáš Kestner při technice najdi a povol v akci</p>
+          </div>
         </div>
       </div>
     </section>
@@ -142,24 +153,24 @@
         </p>
 
         <ol class="process">
-          <li class="process__step">
+          <li class="process__step" data-reveal style="--reveal-index: 0">
             <span class="process__num" aria-hidden="true">01</span>
             <h3>Najdu blokádu</h3>
             <p>Palpací najdu přesný triggerpoint nebo zkrácený sval, který omezuje pohyb.</p>
           </li>
-          <li class="process__step">
+          <li class="process__step" data-reveal style="--reveal-index: 1">
             <span class="process__num" aria-hidden="true">02</span>
             <h3>Uvolním trakcí</h3>
             <p>Kombinace trakčně-tlakové techniky a měkkých technik podle toho, co bolístka potřebuje.</p>
           </li>
-          <li class="process__step">
+          <li class="process__step" data-reveal style="--reveal-index: 2">
             <span class="process__num" aria-hidden="true">03</span>
             <h3>Ušiju na míru</h3>
             <p>Intenzitu a přístup přizpůsobím konkrétnímu tělu, ne šabloně z učebnice.</p>
           </li>
         </ol>
 
-        <blockquote class="filozofie__balance">
+        <blockquote class="filozofie__balance" data-reveal>
           <p>
             Tělo se přirozeně vychyluje z rovnováhy — některé svaly se
             zkracují, jiné ochabují. Já tu nerovnováhu najdu a povolím.
@@ -191,23 +202,23 @@
           </p>
 
           <ul class="timeline">
-            <li class="timeline__item">
+            <li class="timeline__item" data-reveal style="--reveal-index: 0">
               <span class="timeline__year">2004</span>
               <span class="timeline__label">Začátek praxe, první certifikace</span>
             </li>
-            <li class="timeline__item">
+            <li class="timeline__item" data-reveal style="--reveal-index: 1">
               <span class="timeline__year">7 let</span>
               <span class="timeline__label">Masér FK Mladá Boleslav — souběžně se soukromými klienty</span>
             </li>
-            <li class="timeline__item">
+            <li class="timeline__item" data-reveal style="--reveal-index: 2">
               <span class="timeline__year">—</span>
               <span class="timeline__label">Lektor rekvalifikačních masérských kurzů (ESF)</span>
             </li>
-            <li class="timeline__item">
+            <li class="timeline__item" data-reveal style="--reveal-index: 3">
               <span class="timeline__year">—</span>
               <span class="timeline__label">Masáže pro firmy (např. Linet)</span>
             </li>
-            <li class="timeline__item">
+            <li class="timeline__item" data-reveal style="--reveal-index: 4">
               <span class="timeline__year">20+ let</span>
               <span class="timeline__label">Praxe celkem</span>
             </li>
@@ -217,14 +228,13 @@
         <div class="o-mne__media">
           <!-- TODO: nahradit reálným portrétem Tomáše Kestnera,
                min. šířka 900px, poměr stran cca 3:4 -->
-          <img
-            src="assets/img/placeholder-portrait.svg"
-            alt="Portrét Tomáše Kestnera — fotka bude doplněna"
-            width="900"
-            height="1200"
-            loading="lazy"
-            class="img-cover"
-          >
+          <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: portrét Tomáše Kestnera">
+            <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+              <circle cx="12" cy="13" r="3.5"></circle>
+            </svg>
+            <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: portrét Tomáše Kestnera</p>
+          </div>
         </div>
       </div>
     </section>
@@ -234,72 +244,170 @@
         <h2 class="section-heading">Služby a ceník</h2>
 
         <ul class="services-grid">
-          <li>
+          <li data-reveal style="--reveal-index: 0">
             <article class="service-card">
+              <div class="service-card__media">
+                <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: klasická masáž zad v akci">
+                  <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+                    <circle cx="12" cy="13" r="3.5"></circle>
+                  </svg>
+                  <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: klasická masáž zad v akci</p>
+                </div>
+              </div>
               <h3>Klasické masáže</h3>
               <p>Uvolnění ztuhlých zad a ramen po dlouhém sezení u počítače.</p>
               <p class="service-card__price">1000 Kč / 25 minut</p>
-              <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+              <div class="service-card__cta-row">
+                <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+                <a class="service-card__cta service-card__cta--secondary" href="sluzby/klasicke-masaze.html">Zjistit více →</a>
+              </div>
             </article>
           </li>
-          <li>
+          <li data-reveal style="--reveal-index: 1">
             <article class="service-card">
+              <div class="service-card__media">
+                <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: ruční lymfodrenáž v akci">
+                  <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+                    <circle cx="12" cy="13" r="3.5"></circle>
+                  </svg>
+                  <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: ruční lymfodrenáž v akci</p>
+                </div>
+              </div>
               <h3>Lymfatické masáže</h3>
               <p>Ruční lymfodrenáž — úleva od otoků a těžkých nohou, sportovcům zvedá výkonnost až o 10 %.</p>
               <p class="service-card__price">1000 Kč / 25 minut</p>
-              <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+              <div class="service-card__cta-row">
+                <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+                <a class="service-card__cta service-card__cta--secondary" href="sluzby/lymfaticke-masaze.html">Zjistit více →</a>
+              </div>
             </article>
           </li>
-          <li>
+          <li data-reveal style="--reveal-index: 2">
             <article class="service-card">
+              <div class="service-card__media">
+                <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: reflexní terapie chodidla">
+                  <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+                    <circle cx="12" cy="13" r="3.5"></circle>
+                  </svg>
+                  <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: reflexní terapie chodidla</p>
+                </div>
+              </div>
               <h3>Reflexní terapie</h3>
               <p>Tlak na reflexní bod na chodidle rozhýbe konkrétní místo jinde v těle — podle staré čínské nauky o akupunkturních bodech.</p>
               <p class="service-card__price">1000 Kč / 25 minut</p>
-              <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+              <div class="service-card__cta-row">
+                <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+                <a class="service-card__cta service-card__cta--secondary" href="sluzby/reflexni-terapie.html">Zjistit více →</a>
+              </div>
             </article>
           </li>
-          <li>
+          <li data-reveal style="--reveal-index: 3">
             <article class="service-card">
+              <div class="service-card__media">
+                <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: měkká a trakční technika v akci">
+                  <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+                    <circle cx="12" cy="13" r="3.5"></circle>
+                  </svg>
+                  <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: měkká a trakční technika v akci</p>
+                </div>
+              </div>
               <h3>Měkké a trakční techniky</h3>
               <p>Šetrné uvolnění pro citlivá místa a čerstvá zranění.</p>
               <p class="service-card__price">1000 Kč / 25 minut</p>
-              <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+              <div class="service-card__cta-row">
+                <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+                <a class="service-card__cta service-card__cta--secondary" href="sluzby/mekke-trakcni-techniky.html">Zjistit více →</a>
+              </div>
             </article>
           </li>
-          <li>
+          <li data-reveal style="--reveal-index: 4">
             <article class="service-card">
+              <div class="service-card__media">
+                <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: aplikace kineziotapingu">
+                  <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+                    <circle cx="12" cy="13" r="3.5"></circle>
+                  </svg>
+                  <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: aplikace kineziotapingu</p>
+                </div>
+              </div>
               <h3>Taping, kineziotaping, crosstaping</h3>
               <p>Podpora svalu nebo kloubu, která vydrží i při tréninku.</p>
               <!-- TODO: cena k doplnění od klienta -->
               <p class="service-card__price">Cena na dotaz</p>
-              <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+              <div class="service-card__cta-row">
+                <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+                <a class="service-card__cta service-card__cta--secondary" href="sluzby/taping-kineziotaping-crosstaping.html">Zjistit více →</a>
+              </div>
             </article>
           </li>
-          <li>
+          <li data-reveal style="--reveal-index: 5">
             <article class="service-card">
+              <div class="service-card__media">
+                <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: baňkování v akci">
+                  <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+                    <circle cx="12" cy="13" r="3.5"></circle>
+                  </svg>
+                  <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: baňkování v akci</p>
+                </div>
+              </div>
               <h3>Baňkování</h3>
               <p>Prokrvení a uvolnění hlubokých svalových vrstev.</p>
               <p class="service-card__price">1000 Kč / 25 minut</p>
-              <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+              <div class="service-card__cta-row">
+                <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
+                <a class="service-card__cta service-card__cta--secondary" href="sluzby/bankovani.html">Zjistit více →</a>
+              </div>
             </article>
           </li>
-          <li>
+          <li data-reveal style="--reveal-index: 6">
             <article class="service-card service-card--featured">
               <span class="service-card__badge">Čt + Pá</span>
+              <div class="service-card__media">
+                <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: partnerská masáž">
+                  <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+                    <circle cx="12" cy="13" r="3.5"></circle>
+                  </svg>
+                  <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: partnerská masáž</p>
+                </div>
+              </div>
               <h3>Partnerské masáže</h3>
               <p>Masáž ve dvou, vedle sebe, jako společný zážitek.</p>
               <p class="service-card__price">1900 Kč / 60 minut</p>
-              <a class="service-card__cta" href="tel:+420603486737">Objednat →</a>
+              <div class="service-card__cta-row">
+                <a class="service-card__cta" href="tel:+420603486737">Objednat →</a>
+                <a class="service-card__cta service-card__cta--secondary" href="sluzby/partnerske-masaze.html">Zjistit více →</a>
+              </div>
             </article>
           </li>
         </ul>
+      </div>
+    </section>
 
-        <div class="voucher-cta">
-          <div>
-            <h3>Dárkový poukaz</h3>
-            <p>V libovolné hodnotě — ideální dárek, který si vybere sám.</p>
+    <section id="darkove-poukazy" class="poukazy">
+      <div class="container poukazy__inner">
+        <div class="poukazy__content" data-reveal>
+          <h2 class="section-heading">Dárkové poukazy</h2>
+          <p>
+            Nevíte, jaký dárek vybrat? Dárkový poukaz na masáž funguje na
+            libovolnou hodnotu — vybere si sám příjemce, na kterou službu ho
+            uplatní.
+          </p>
+          <div class="poukazy__cta">
+            <a class="btn btn-primary" href="tel:+420603486737">Zeptat se na poukaz</a>
+            <a class="btn btn-secondary" href="mailto:tomas.kestner@seznam.cz">Napsat e-mail</a>
           </div>
-          <a class="btn btn-primary" href="tel:+420603486737">Zeptat se na poukaz</a>
+        </div>
+
+        <div class="poukazy__voucher" aria-hidden="true" data-reveal>
+          <span class="poukazy__voucher-label">Dárkový poukaz</span>
+          <span class="poukazy__voucher-value">V libovolné hodnotě</span>
         </div>
       </div>
     </section>
@@ -320,25 +428,25 @@
         </p>
 
         <ul class="stats-grid">
-          <li>
+          <li data-reveal style="--reveal-index: 0">
             <article class="stat-card">
               <span class="stat-card__value">7 let</span>
               <span class="stat-card__label">Masér FK Mladá Boleslav — profesionální fotbalový klub</span>
             </article>
           </li>
-          <li>
+          <li data-reveal style="--reveal-index: 1">
             <article class="stat-card">
               <span class="stat-card__value">20+ let</span>
               <span class="stat-card__label">Praxe od roku 2004 — soukromí klienti souběžně s FK Mladá Boleslav</span>
             </article>
           </li>
-          <li>
+          <li data-reveal style="--reveal-index: 2">
             <article class="stat-card">
               <span class="stat-card__value">Lektor</span>
               <span class="stat-card__label">Rekvalifikačních masérských kurzů (ESF)</span>
             </article>
           </li>
-          <li>
+          <li data-reveal style="--reveal-index: 3">
             <article class="stat-card">
               <span class="stat-card__value">Firmy</span>
               <span class="stat-card__label">Masáže pro firmy, např. Linet</span>
@@ -362,36 +470,78 @@
           jen reálné prostředí.
         </p>
 
+        <!-- Dlaždice zatím nemají reálnou fotku, proto jsou to obyčejné <div>y
+             s .photo-placeholder, ne <button> — lightbox (viz script.js) je
+             ignoruje, dokud nedostanou skutečný <img>. Až přibudou reálné
+             fotky: obalit .photo-placeholder zpět do <button class="gallery-item">
+             s <img> (WebP + JPG fallback přes <picture>, min. šířka 1200px,
+             poměr 4:3 nebo 1:1), lightbox se zapojí automaticky. -->
         <ul class="gallery-grid">
           <li>
-            <button class="gallery-item" type="button" aria-label="Zvětšit fotku: provozovna Na Radouči 1042">
-              <img src="assets/img/placeholder-square.svg" alt="Provozovna Na Radouči 1042 — fotka bude doplněna" width="1200" height="1200" class="img-cover">
-            </button>
+            <div class="gallery-item gallery-item--placeholder">
+              <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: provozovna Na Radouči 1042">
+                <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+                  <circle cx="12" cy="13" r="3.5"></circle>
+                </svg>
+                <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: provozovna Na Radouči 1042</p>
+              </div>
+            </div>
           </li>
           <li>
-            <button class="gallery-item" type="button" aria-label="Zvětšit fotku: technika najdi a povol v akci">
-              <img src="assets/img/placeholder-square.svg" alt="Tomáš Kestner při technice najdi a povol — fotka bude doplněna" width="1200" height="1200" class="img-cover">
-            </button>
+            <div class="gallery-item gallery-item--placeholder">
+              <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: technika najdi a povol v akci">
+                <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+                  <circle cx="12" cy="13" r="3.5"></circle>
+                </svg>
+                <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: technika najdi a povol v akci</p>
+              </div>
+            </div>
           </li>
           <li>
-            <button class="gallery-item" type="button" aria-label="Zvětšit fotku: kineziotaping">
-              <img src="assets/img/placeholder-square.svg" alt="Aplikace kineziotapingu — fotka bude doplněna" width="1200" height="1200" loading="lazy" class="img-cover">
-            </button>
+            <div class="gallery-item gallery-item--placeholder">
+              <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: kineziotaping">
+                <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+                  <circle cx="12" cy="13" r="3.5"></circle>
+                </svg>
+                <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: kineziotaping</p>
+              </div>
+            </div>
           </li>
           <li>
-            <button class="gallery-item" type="button" aria-label="Zvětšit fotku: baňkování">
-              <img src="assets/img/placeholder-square.svg" alt="Baňkování při masáži — fotka bude doplněna" width="1200" height="1200" loading="lazy" class="img-cover">
-            </button>
+            <div class="gallery-item gallery-item--placeholder">
+              <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: baňkování">
+                <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+                  <circle cx="12" cy="13" r="3.5"></circle>
+                </svg>
+                <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: baňkování</p>
+              </div>
+            </div>
           </li>
           <li>
-            <button class="gallery-item" type="button" aria-label="Zvětšit fotku: vybavení provozovny">
-              <img src="assets/img/placeholder-square.svg" alt="Masérský stůl a vybavení provozovny — fotka bude doplněna" width="1200" height="1200" loading="lazy" class="img-cover">
-            </button>
+            <div class="gallery-item gallery-item--placeholder">
+              <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: vybavení provozovny">
+                <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+                  <circle cx="12" cy="13" r="3.5"></circle>
+                </svg>
+                <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: vybavení provozovny</p>
+              </div>
+            </div>
           </li>
           <li>
-            <button class="gallery-item" type="button" aria-label="Zvětšit fotku: čekárna provozovny">
-              <img src="assets/img/placeholder-square.svg" alt="Čekárna provozovny Na Radouči 1042 — fotka bude doplněna" width="1200" height="1200" loading="lazy" class="img-cover">
-            </button>
+            <div class="gallery-item gallery-item--placeholder">
+              <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: čekárna provozovny">
+                <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
+                  <circle cx="12" cy="13" r="3.5"></circle>
+                </svg>
+                <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: čekárna provozovny</p>
+              </div>
+            </div>
           </li>
         </ul>
       </div>

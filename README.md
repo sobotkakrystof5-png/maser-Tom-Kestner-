@@ -1,13 +1,15 @@
 # Masáže Kestner — web
 
-Jednostránkový web pro Tomáše Kestnera (masér, Mladá Boleslav). Čisté
-HTML5/CSS3/vanilla JS — žádný build krok, žádné závislosti pro běh webu.
+Statický vícestránkový web pro Tomáše Kestnera (masér, Mladá Boleslav) —
+hlavní landing page (`index.html`) doplněná podstránkami jednotlivých
+služeb v `/sluzby/`. Čisté HTML5/CSS3/vanilla JS — žádný build krok, žádné
+závislosti pro běh webu.
 
 ## Nasazení
 
-Web je čistě statický (`index.html`, `styles.css`, `script.js`, `/assets`,
-`sitemap.xml`, `robots.txt`) — stačí nahrát celý obsah složky na libovolný
-statický hosting:
+Web je čistě statický (`index.html`, `styles.css`, `script.js`, `/sluzby`,
+`/assets`, `sitemap.xml`, `robots.txt`) — stačí nahrát celý obsah složky na
+libovolný statický hosting:
 
 - **Netlify / Vercel**: přetáhnout složku do dashboardu, nebo připojit git
   repozitář a nastavit build command na prázdno (žádný build krok).
@@ -21,6 +23,8 @@ místech:
 
 - `index.html` — `<link rel="canonical">`, `og:url`, `og:image`, JSON-LD
   `url`/`image`
+- `sluzby/*.html` (7 souborů) — `<link rel="canonical">`, `og:url`,
+  `og:image` v každém (bez JSON-LD, ten je jen na `index.html`)
 - `sitemap.xml` — všechny `<loc>` záznamy
 - `robots.txt` — řádek `Sitemap:`
 
@@ -31,25 +35,34 @@ zde je jejich přehled:
 
 | Co | Kde v kódu | Formát |
 |---|---|---|
-| Fotka hero (Tomáš při masáži) | `#hero` → `.hero__media img` | min. šířka 1200px, poměr 4:3, WebP + JPG fallback |
-| Portrét Tomáše | `#o-mne` → `.o-mne__media img` | min. šířka 900px, poměr 3:4 |
+| Fotka hero (Tomáš při masáži) | `#hero` → `.hero__media` (`.photo-placeholder`) | min. šířka 1200px, poměr 4:3, WebP + JPG fallback |
+| Portrét Tomáše | `#o-mne` → `.o-mne__media` (`.photo-placeholder`) | min. šířka 900px, poměr 3:4 |
+| Fotka u každé služby (7×, hlavní stránka + odpovídající podstránka) | `#sluzby-cenik` → `.service-card__media`, a `sluzby/[slug].html` → `.sluzba-detail__media-grid` (2–3 fotky na podstránku) | min. šířka 1200px, poměr 4:3, WebP + JPG fallback |
 | 6 fotek galerie (provozovna, technika, taping, baňkování, vybavení, čekárna) | `#galerie` → `.gallery-grid` | min. šířka 1200px, poměr 4:3 nebo 1:1, WebP + JPG fallback |
-| Ceny služeb kromě partnerské masáže | `#sluzby-cenik` → každá `.service-card` | nahradit text "Cena na dotaz" |
+| Cena tapingu/kineziotapingu/crosstapingu | `#sluzby-cenik` a `sluzby/taping-kineziotaping-crosstaping.html` | nahradit text "Cena na dotaz" (jediná nepotvrzená cena — ostatní služby mají potvrzený paušál 1000 Kč/25 min, partnerské masáže 1900 Kč/60 min) |
 | Reálné reference klientů | `#reference` (aktuálně sekce "Zkušenosti" na faktech) | přesné znění citace + jméno/iniciála příjmení dle GDPR souhlasu — viz `.claude/skills/reference/SKILL.md` |
 | Otevírací doba | `#kontakt` a JSON-LD v `<head>` | zatím záměrně vynechána (nepotvrzená), nevkládat bez potvrzení od klienta |
 | Formulářový backend | `#kontakt` → `<form id="contact-form">` | zatím `mailto:` fallback (funkční, ale vyžaduje krok navíc od uživatele) — po výběru hostingu nahradit za Formspree/Netlify Forms (fetch POST), viz komentář v `script.js` |
 | Google Maps embed | `#kontakt` → `.kontakt__map iframe` | aktuálně bez API klíče (`?q=...&output=embed`) — funkční, ale bez analytiky/oficiální podpory Google |
 
-Placeholder fotky (`assets/img/placeholder-*.svg`) i favicon/apple-touch-icon/
-og-image (`assets/icons/`, `apple-touch-icon.png`, `og-image.jpg`) jsou vlastní
-vygenerovaná grafika (flow-gradient + abstraktní ikona), ne stock fotky —
-bezpečně smazatelná/nahraditelná, jakmile dorazí reálné podklady.
+Chybějící fotky jsou označené komponentou `.photo-placeholder` (výrazný
+přerušovaný rámeček + ikona fotoaparátu + popisek "FOTO K DOPLNĚNÍ: ...") —
+ne tichý `<img>` s jemnou zástupnou grafikou jako dřív. Až dorazí reálná
+fotka: nahradit `<div class="photo-placeholder">...</div>` za
+`<picture>`/`<img class="img-cover">` (WebP + JPG fallback) uvnitř stejného
+wrapperu (`.hero__media`, `.o-mne__media`, `.service-card__media`,
+`.gallery-item`) — wrapper si drží `aspect-ratio`, není potřeba měnit
+layout. U galerie navíc obalit zpět do `<button class="gallery-item">`
+s `aria-label`, ať se zapojí do lightboxu (viz `script.js`
+`galleryLightbox()` — dlaždice bez `<img>` lightbox automaticky
+přeskakuje). Favicon/apple-touch-icon/og-image (`assets/icons/`,
+`apple-touch-icon.png`, `og-image.jpg`) zůstávají beze změny.
 
 ## Známá zjednodušení (transparentně, ne skrytě)
 
-- Gallery placeholder dlaždice používají `<img src="*.svg">` místo
-  `<picture>` WebP/JPG — dává smysl až s reálnými fotkami (viz TODO
-  komentář v `index.html` u `#galerie`).
+- Gallery placeholder dlaždice jsou zatím neklikatelné `<div>`, ne
+  `<button>` — lightbox (`script.js`) je ignoruje, dokud nedostanou
+  skutečný `<img>` (viz TODO komentář v `index.html` u `#galerie`).
 - Kontaktní formulář nemá zvolený hosting-specifický backend, proto zatím
   "odesílá" přes `mailto:` (otevře e-mailový klient s předvyplněnou
   zprávou) — funkční už dnes, ale ne plně automatické.
@@ -58,6 +71,13 @@ bezpečně smazatelná/nahraditelná, jakmile dorazí reálné podklady.
   byl další krok, pokud bude potřeba vyždímat poslední ms výkonu.
 
 ## Ověření kvality
+
+Skóre níže je ze stavu **před** redesignem 2026-07-28 (nová paleta/font,
+7 podstránek, scroll-reveal JS, nová sekce) — po redesignu nebylo možné
+Lighthouse v tomto prostředí spustit znovu (lokální statický server na
+cestě s diakritikou selhával kvůli encoding chybě, mimo kontrolu editoru),
+takže čísla níže **je potřeba přeměřit** před spuštěním, ne brát jako
+platná pro aktuální kód:
 
 Při buildu ověřeno reálným Lighthouse CLI (headless Chrome, ne jen odhad):
 **Performance 100 · Accessibility 100 · Best Practices 100 · SEO 100**,

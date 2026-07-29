@@ -36,8 +36,9 @@ práci s tělem, ne relaxační doplněk.
 
 ## Design
 
-- Energy-flow gradient (lime → korál) se sem hodí jako vizuální metafora pohybu —
-  např. jako vedoucí linka mezi kroky vysvětlení techniky, nikdy jako plošné pozadí.
+- Flow-line (jemný přechod akcent → tmavší akcent) se sem hodí jako vizuální metafora
+  pohybu — např. jako vedoucí linka mezi kroky vysvětlení techniky, nikdy jako plošné
+  pozadí.
 - Respektovat `prefers-reduced-motion`, pokud je zde animovaný prvek znázorňující
   "flow"/pohyb.
 

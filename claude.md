@@ -46,7 +46,8 @@ si někdo zavolá a objedná masáž? Pokud ne, zvaž, jestli to sem vůbec pat�
 
 O projektu
 
-Jednostránkový (landing page) web pro Tomáše Kestnera, maséra v Mladé Boleslavi.
+Statický vícestránkový web pro Tomáše Kestnera, maséra v Mladé Boleslavi — hlavní landing
+page (index.html) doplněná podstránkami jednotlivých služeb (viz Tech stack níže).
 Nahrazuje starý web na Webnode (zastaralý, neresponzivní, nulové SEO).
 Cíl: moderní, rychlý, heslovitý web se špičkovým SEO a maximálním organickým dosahem.
 
@@ -147,7 +148,12 @@ Statický web, nasaditelný kamkoliv (Netlify, GitHub Pages, Forpsi apod.) prost
 
 
 
-Jedna HTML stránka (index.html), sekce jako <section id="..."> s kotvami pro navigaci.
+Statický vícestránkový web bez frameworku a bez buildu (čisté HTML5/CSS3/vanilla JS, žádné
+npm závislosti pro běh webu). index.html zůstává hlavní landing page se sekcemi jako
+<section id="..."> a kotvami pro navigaci — funguje jako samostatný konverzní tok. Doplňkové
+podstránky služeb žijí v /sluzby/[slug].html (např. /sluzby/bankovani.html), sdílejí
+styles.css a script.js s hlavní stránkou, mají vlastní <title>/meta description/H1, ale bez
+duplicitního JSON-LD LocalBusiness (ten zůstává jen na index.html).
 
 
 
@@ -170,6 +176,14 @@ Souborová struktura
 ├── index.html
 ├── styles.css
 ├── script.js
+├── /sluzby
+│   ├── klasicke-masaze.html
+│   ├── lymfaticke-masaze.html
+│   ├── reflexni-terapie.html
+│   ├── mekke-trakcni-techniky.html
+│   ├── taping-kineziotaping-crosstaping.html
+│   ├── bankovani.html
+│   └── partnerske-masaze.html
 ├── /assets
 │   ├── /img       (WebP primárně, JPG fallback)
 │   └── /icons     (SVG)
@@ -177,27 +191,62 @@ Souborová struktura
 ├── robots.txt
 └── favicon + apple-touch-icon + og-image.jpg
 
+Obecné design skilly — jak se aplikují v tomto projektu
+
+V .claude/skills/ jsou kromě sekčních skillů i dva obecné: frontend-design
+(anthropics/skills) a taste-skill (leonxlnx/taste-skill). Oba popisují návrhové
+principy pro "anti-slop" weby, ale taste-skill je psaný pro React/Next.js/Tailwind/
+Framer Motion/GSAP/shadcn stack. Pravidlo, jak se čtou v kontextu tohoto projektu:
+
+- Přebírá se jejich designové myšlení — barevná kázeň (jeden akcent, žádné
+  nechtěné míchání palety), diverzifikace layoutu (ne 3x stejný pattern po sobě),
+  pravidlo "motion má důvod" (žádná animace bez funkce), audit copy před odevzdáním,
+  kontrola kontrastu tlačítek, disciplína v hero sekci (max 2 řádky nadpisu, CTA
+  viditelné bez scrollu) — to vše platí a překládá se do vanilla HTML/CSS/JS.
+- Nepřebírají se jejich stack-specifické instrukce. React/Next.js, Tailwind,
+  Framer Motion / GSAP, shadcn/Radix, npm ikonové balíčky, Server Components a
+  podobné pokyny se pro tento projekt ignorují — "Tech stack — pevně dané" výše
+  má vždy přednost. Ekvivalent v praxi: místo Framer Motion použij CSS
+  transitions/keyframes nebo IntersectionObserver ve vanilla JS; místo Tailwind
+  utility třídy v styles.css; místo npm ikon SVG v /assets/icons.
+- Jejich doporučené barevné palety / fonty se nepoužívají — design tokeny
+  a typografie jsou definované níže v "Design systém — závazné tokeny" a mají
+  přednost i před "banned palette" pravidly z taste-skill. Změna tokenů vyžaduje
+  pořád výslovné schválení (viz Pracovní postup níže), skill sám o sobě
+  schválení nenahrazuje.
+
 
 
 Design systém — závazné tokeny
 
-Energický, živý směr. Ne kamenný/klidový, ne generický AI cream+terakota vzhled.
+Klinická preciznost bývalého maséra profesionálního fotbalového klubu, ne spa/wellness a ne
+startupová SaaS estetika. Redesign 2026-07-28 (schváleno uživatelem, varianta "Klinický les"):
+--paper původně skoro identické s hexem, který je v taste-skill explicitně označený jako
+"AI slop cream" — nahrazeno chladnějším odstínem. Dvojice komplementárních akcentů
+(lime+coral) nahrazena jedním tlumeným akcentem — taste-skill pravidlo "max 1 accent color".
 
 :root {
   /* Podklad */
-  --paper: #FAF7F0;
-  --ink: #16241F;          /* hluboká lesní, ne čistě černá */
+  --paper: #F4F6F2;
+  --ink: #16241F;          /* hluboká lesní, ne čistě černá — beze změny, už distinktivní */
   --ink-soft: #4B5A50;
 
-  /* Akcenty — energie a pohyb */
-  --lime: #86C232;         /* zdraví, růst, pohyb */
-  --coral: #FF6845;        /* energie, vitalita, teplo */
-  --lime-deep: #5E9021;
-  --coral-deep: #E8501F;
+  /* Akcent — jeden, tlumený rezavý (tejpovací páska / klinická preciznost) */
+  --accent: #C9662E;
+  --accent-deep: #A34F1F;
 
-  /* Energy-flow gradient — SIGNATURNÍ prvek webu */
-  --flow-gradient: linear-gradient(115deg, var(--lime) 0%, var(--coral) 100%);
+  /* Flow-line — jemný jednobarevný přechod akcent → accent-deep, jen jako linka/podtržení,
+     nikdy plošné pozadí */
+  --flow-line: linear-gradient(115deg, var(--accent) 0%, var(--accent-deep) 100%);
+
+  /* Funkční stavové barvy formuláře — nezávislé na brand akcentu (běžná UX konvence
+     zelená=OK/červená=chyba, ne součást brand identity) */
+  --success: #3F7D3A;
+  --error: #B3261E;
 }
+
+Kontrast (WCAG, vypočteno): --ink na --paper 14.8:1. --accent na --paper 3.6:1 — accent proto
+jen pro UI prvky/hranice/velký text, nikdy jako barva odstavcového textu.
 
 Typografie:
 
@@ -205,18 +254,23 @@ Typografie:
 
 
 
-Display: Space Grotesk (600–700) — sebevědomý, přátelský, ne strojově sportovní
+Display: Archivo (700–800) — robustnější, méně "geometricky hravé" tvary než dřívější Space
+Grotesk (jeden z nejběžnějších display fontů indie-SaaS/Linear-stylu). Čte se sebevědomě/
+klinicky, ne startupově hravě, a zůstává ve stejné neo-grotesque rodině jako Inter, takže
+párování nepůsobí nesourodě. Plná podpora české diakritiky.
 
 
 
-Body: Inter (400–600) — čitelnost, dobrá CZ diakritika
+Body: Inter (400–600) — čitelnost, dobrá CZ diakritika. Beze změny: výměna body fontu je
+nejdražší/nejméně přínosná páka, čitelnost drobného textu na mobilu je důležitější než
+distinktivnost na úrovni odstavce.
 
 
 
 Žádný třetí font bez konzultace
 
-Signaturní prvek — "energy flow": gradientová vlna/linka (lime → korál), která
-propojuje sekce jako vizuální nit symbolizující synergii pohybu a regenerace. Použití:
+Signaturní prvek — "flow-line": jemná jednobarevná gradientová linka (akcent → tmavší
+akcent), která propojuje sekce jako vizuální nit. Použití:
 
 
 
