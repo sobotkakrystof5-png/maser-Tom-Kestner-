@@ -542,7 +542,17 @@ main[id] {
 }
 
 .site-nav__menu-cta .btn {
+  /* .site-nav__menu a { color: var(--ink) } má vyšší specificitu než .btn-primary
+     samotné a přebíjela by barvu textu na tmavém pozadí tlačítka — proto override zde. */
   width: 100%;
+  color: var(--paper);
+}
+
+.site-nav__menu-cta .btn:hover,
+.site-nav__menu-cta .btn:focus-visible {
+  /* Hover/focus mění pozadí na flow-line (světlejší akcent) — text musí zpět
+     na tmavou barvu, jinak by měl nedostatečný kontrast. */
+  color: var(--ink);
 }
 
 @media (min-width: 768px) {
