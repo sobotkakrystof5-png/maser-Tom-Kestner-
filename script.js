@@ -49,6 +49,74 @@
   items.forEach((el) => observer.observe(el));
 })();
 
+(function processSequence() {
+  // Sekvence 01→02→03 v sekci Filozofie: linka se kreslí ve směru čtení,
+  // pulz po ní putuje a postupně rozsvěcí uzly. Vlastní observer (ne sdílený
+  // [data-reveal]) proto, že se musí spustit celý blok najednou — kdyby se
+  // kroky odhalovaly každý zvlášť, rozpadne se návaznost na kreslení linky.
+  const process = document.querySelector("[data-process]");
+  if (!process) return;
+
+  const steps = Array.from(process.querySelectorAll(".process__step"));
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function play() {
+    process.classList.add("is-running");
+  }
+
+  function reset() {
+    if (!process.classList.contains("is-running")) return;
+    // .is-instant vypne přechody, aby se sekvence nepřehrála pozpátku;
+    // vynucený reflow mezi oběma změnami třídy brání tomu, aby je prohlížeč
+    // sloučil do jednoho přepočtu (pak by se reset neprojevil).
+    process.classList.add("is-instant");
+    process.classList.remove("is-running");
+    void process.offsetWidth;
+    process.classList.remove("is-instant");
+  }
+
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    // Bez animace, ale ve finálním stavu — CSS skrývá kroky jen do chvíle,
+    // než .is-running dorazí, takže obsah nesmí zůstat viset neviditelný.
+    play();
+  } else {
+    // Start až když horní hrana bloku vyjede nad 65 % výšky okna, tedy když
+    // ho návštěvník má reálně před očima. Předchozí spouštěč (threshold 0.2,
+    // odečet jen 60px zdola) startoval ve chvíli, kdy blok teprve vykoukl
+    // u spodní hrany — celá sekvence dojela dřív, než se na ni stihl podívat.
+    // threshold 0 (ne procentní podíl bloku) proto, že blok bývá na mobilu
+    // vyšší než zbývající výřez a podíl by se k prahu nemusel vůbec dostat.
+    const playObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) play();
+      },
+      { threshold: 0, rootMargin: "0px 0px -35% 0px" }
+    );
+    playObserver.observe(process);
+
+    // Odscrollování mimo obrazovku sekvenci vrátí na začátek, takže se při
+    // návratu přehraje znovu — kdo ji jednou minul, nemá smůlu napořád.
+    const resetObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) reset();
+      },
+      { threshold: 0 }
+    );
+    resetObserver.observe(process);
+  }
+
+  // Dotykový ekvivalent hoveru: klepnutí zvýrazní krok, druhé klepnutí ho
+  // zhasne. Na desktopu je zvýraznění na :hover (viz styles.css), takže se
+  // tímhle nic nerozbije — jen se přidá stejný stav.
+  steps.forEach((step) => {
+    step.addEventListener("click", () => {
+      const wasActive = step.classList.contains("is-active");
+      steps.forEach((other) => other.classList.remove("is-active"));
+      if (!wasActive) step.classList.add("is-active");
+    });
+  });
+})();
+
 (function mobileNav() {
   const toggle = document.getElementById("nav-toggle");
   const menu = document.getElementById("nav-menu");
@@ -97,6 +165,7 @@
   );
   const dialog = document.getElementById("lightbox");
   const imgEl = document.getElementById("lightbox-img");
+  const captionEl = document.getElementById("lightbox-caption");
   const closeBtn = document.getElementById("lightbox-close");
   const prevBtn = document.getElementById("lightbox-prev");
   const nextBtn = document.getElementById("lightbox-next");
@@ -107,8 +176,20 @@
   function show(index) {
     current = (index + items.length) % items.length;
     const sourceImg = items[current].querySelector("img");
-    imgEl.src = sourceImg.src;
+    // data-full = největší varianta (WebP). Bez ní by lightbox ukázal to, co
+    // srcset vybral pro malou dlaždici — na mobilu 480px roztažených přes celou
+    // obrazovku. currentSrc je fallback, když dlaždice data-full nemá.
+    imgEl.src = sourceImg.dataset.full || sourceImg.currentSrc || sourceImg.src;
     imgEl.alt = sourceImg.alt;
+
+    // Krátký titulek pod fotkou (data-caption). Když dlaždice popisek nemá,
+    // figcaption se schová úplně — prázdný řádek pod obrázkem by jen tlačil
+    // layout, aniž by něco sdělil.
+    if (captionEl) {
+      const caption = sourceImg.dataset.caption || "";
+      captionEl.textContent = caption;
+      captionEl.hidden = !caption;
+    }
   }
 
   items.forEach((item, index) => {
@@ -174,6 +255,7 @@
 (function contactForm() {
   const form = document.getElementById("contact-form");
   const status = document.getElementById("contact-form-status");
+  const fallback = document.getElementById("contact-form-fallback");
   if (!form || !status) return;
 
   const errorMessages = {
@@ -182,35 +264,103 @@
     message: "Napište prosím pár slov do zprávy.",
   };
 
-  form.addEventListener("submit", (event) => {
+  const submitButton = form.querySelector("button[type='submit']");
+  const submitLabel = submitButton ? submitButton.textContent : "";
+
+  // Jediná cesta odeslání je /api/kontakt → Resend. Žádný mailto: obchvat:
+  // návštěvník dostane buď potvrzení skutečně odeslané zprávy, nebo poctivou
+  // chybu s přímým kontaktem. Falešné „odesláno“ by bylo horší než chyba —
+  // poptávka je pro živnostníka to nejcennější, co na webu vzniká.
+  function setStatus(text, state) {
+    status.textContent = text;
+    status.classList.toggle("is-error", state === "error");
+    status.classList.toggle("is-pending", state === "pending");
+  }
+
+  // Přímý kontakt se odkrývá jen při selhání na naší straně. U chyby ve vyplnění
+  // tam nepatří — to si návštěvník opraví sám a nemá důvod odcházet z formuláře.
+  function showFallback(visible) {
+    if (fallback) fallback.hidden = !visible;
+  }
+
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    status.classList.remove("is-error");
+    showFallback(false);
 
     if (!form.checkValidity()) {
       const invalidField = form.querySelector(":invalid");
-      status.textContent =
+      setStatus(
         (invalidField && errorMessages[invalidField.name]) ||
-        "Zkontrolujte prosím vyplněné údaje.";
-      status.classList.add("is-error");
+          "Zkontrolujte prosím vyplněné údaje.",
+        "error"
+      );
       if (invalidField) invalidField.focus();
       return;
     }
 
     const data = new FormData(form);
-    const name = data.get("name");
-    const email = data.get("email");
-    const phone = data.get("phone");
-    const message = data.get("message");
+    const payload = {
+      name: data.get("name"),
+      email: data.get("email"),
+      phone: data.get("phone"),
+      message: data.get("message"),
+      website: data.get("website"), // honeypot — server ho vyhodnotí
+    };
 
-    // TODO: až bude zvolený hosting s formulářovým backendem (Formspree /
-    // Netlify Forms), nahradit tento mailto: fallback skutečným odesláním
-    // (fetch POST na endpoint backendu) — viz TODO u formuláře v index.html.
-    const subject = encodeURIComponent(`Zpráva z webu — ${name}`);
-    const body = encodeURIComponent(
-      `Jméno: ${name}\nE-mail: ${email}\nTelefon: ${phone || "neuvedeno"}\n\n${message}`
-    );
-    window.location.href = `mailto:tomas.kestner@seznam.cz?subject=${subject}&body=${body}`;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Odesílám…";
+    }
+    setStatus("Odesílám zprávu…", "pending");
 
-    status.textContent = "Otvírám e-mail s vyplněnou zprávou — stačí ji odeslat.";
+    try {
+      const response = await fetch("/api/kontakt", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      // 200 posílá server až po potvrzení od Resendu, takže „odesláno“ tady
+      // není odhad — e-mail je přijatý k doručení.
+      if (response.ok) {
+        form.reset();
+        setStatus("Zpráva odeslána. Ozvu se co nejdřív.", "success");
+        return;
+      }
+
+      // 400 = chyba ve vyplněných datech, tu opraví návštěvník.
+      if (response.status === 400) {
+        const detail = await response.json().catch(() => null);
+        setStatus(
+          (detail && detail.error) || "Zkontrolujte prosím vyplněné údaje.",
+          "error"
+        );
+        return;
+      }
+
+      // 429 = brzda proti spamu na serveru. Není to chyba návštěvníka ani
+      // výpadek, takže vlastní hláška místo obecného „nepodařilo se“.
+      if (response.status === 429) {
+        setStatus(
+          "Z vaší sítě přišlo moc zpráv za sebou. Zkuste to prosím za chvíli.",
+          "error"
+        );
+        showFallback(true);
+        return;
+      }
+
+      // Zbytek (503 nenakonfigurovaný odesílatel, 502 Resend, 500) je problém
+      // na naší straně — formulář to přizná a nabídne telefon/e-mail.
+      setStatus("Zprávu se teď nepodařilo odeslat.", "error");
+      showFallback(true);
+    } catch {
+      setStatus("Zprávu se teď nepodařilo odeslat — vypadá to na výpadek spojení.", "error");
+      showFallback(true);
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = submitLabel;
+      }
+    }
   });
 })();

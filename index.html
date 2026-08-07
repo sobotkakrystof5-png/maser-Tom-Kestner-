@@ -10,7 +10,7 @@
   <link rel="canonical" href="https://www.example.com/">
 
   <meta property="og:title" content="Masáž Mladá Boleslav — Tomáš Kestner">
-  <meta property="og:description" content="20 let praxe, 7 let u FK Mladá Boleslav. Vlastní technika „najdi a povol" na spazmy a triggerpointy.">
+  <meta property="og:description" content="20 let praxe, 7 let u FK Mladá Boleslav. Vlastní technika „najdi a povol“ na spazmy a triggerpointy.">
   <meta property="og:image" content="https://www.example.com/og-image.jpg">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="cs_CZ">
@@ -110,11 +110,11 @@
       <div class="container hero__inner">
         <div class="hero__content">
           <p class="section-eyebrow">Mladá Boleslav · Od 2004</p>
-          <h1>Najdu a povolím blokádu. Technikou ověřenou 7 let u profi fotbalistů FK Mladá Boleslav.</h1>
+          <h1 class="hero__claim">Najdi a&nbsp;povol — technika ověřená u profi fotbalistů FK&nbsp;Mladá&nbsp;Boleslav</h1>
           <p class="hero__subtitle">
-            Vlastní trakční tlaková technika „najdi a povol" — cílená na
-            spazmy, triggerpointy a zkrácené svaly. Ne relaxační procedura,
-            ale řešení příčiny.
+            20 let praxe, 7 z toho u profesionálního fotbalu. Trakce, tlak
+            a měkké techniky na spazmy, triggerpointy a zkrácené svaly —
+            není to relaxační procedura, ale řešení příčiny.
           </p>
           <div class="hero__cta">
             <a class="btn btn-primary" href="tel:+420603486737">
@@ -127,15 +127,25 @@
         </div>
 
         <div class="hero__media">
-          <!-- TODO: nahradit reálnou fotkou Tomáše při práci (technika "najdi a povol"),
-               min. šířka 1200px, poměr stran cca 4:3, formát WebP + JPG fallback -->
-          <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: Tomáš Kestner při technice najdi a povol v akci">
-            <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-              <circle cx="12" cy="13" r="3.5"></circle>
-            </svg>
-            <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: Tomáš Kestner při technice najdi a povol v akci</p>
-          </div>
+          <!-- LCP prvek — záměrně bez loading="lazy", s fetchpriority="high",
+               aby se načetl v prvním dávce requestů. Zdroj je na výšku (3:4),
+               proto má .hero__media portrétní poměr — viz styles.css. -->
+          <picture>
+            <source
+              type="image/webp"
+              srcset="assets/img/tomas-kestner-masaz-najdi-a-povol-800.webp 800w,
+                      assets/img/tomas-kestner-masaz-najdi-a-povol.webp 1200w"
+              sizes="(min-width: 1024px) 460px, 100vw">
+            <img
+              class="img-cover hero__photo"
+              src="assets/img/tomas-kestner-masaz-najdi-a-povol.jpg"
+              srcset="assets/img/tomas-kestner-masaz-najdi-a-povol-800.jpg 800w,
+                      assets/img/tomas-kestner-masaz-najdi-a-povol.jpg 1200w"
+              sizes="(min-width: 1024px) 460px, 100vw"
+              width="1200" height="1600"
+              fetchpriority="high" decoding="async"
+              alt="Tomáš Kestner při technice najdi a povol — uvolňuje zkrácený sval na stehně v provozovně masáží v Mladé Boleslavi">
+          </picture>
         </div>
       </div>
     </section>
@@ -144,43 +154,55 @@
       <div class="container">
         <h2 class="section-heading">Metoda najdi a povol</h2>
         <p class="filozofie__intro">
-          „Najdi a povol" není jedna naučená hmatová technika — je to
-          kombinace mnohaletých zkušeností a výběru z různých hmatů (trakce,
-          tlak, měkké techniky), které nasadím přesně podle toho, co ta
-          konkrétní bolístka potřebuje. Žádné plošné hnětení pro chvilkový
-          pocit uvolnění — cílená práce na konkrétní spazmus nebo
-          triggerpoint, dokud skutečně nezmizí.
+          „Najdi a povol“ je kombinace mnohaletých zkušeností a výběru
+          z různých hmatů (trakce, tlak, měkké techniky), které použiju
+          přesně podle toho, co je zrovna potřeba. Cílená práce na
+          konkrétní spazmus nebo triggerpoint, dokud skutečně nezmizí.
         </p>
 
-        <ol class="process">
-          <li class="process__step" data-reveal style="--reveal-index: 0">
-            <span class="process__num" aria-hidden="true">01</span>
-            <h3>Najdu blokádu</h3>
-            <p>Palpací najdu přesný triggerpoint nebo zkrácený sval, který omezuje pohyb.</p>
-          </li>
-          <li class="process__step" data-reveal style="--reveal-index: 1">
-            <span class="process__num" aria-hidden="true">02</span>
-            <h3>Uvolním trakcí</h3>
-            <p>Kombinace trakčně-tlakové techniky a měkkých technik podle toho, co bolístka potřebuje.</p>
-          </li>
-          <li class="process__step" data-reveal style="--reveal-index: 2">
-            <span class="process__num" aria-hidden="true">03</span>
-            <h3>Ušiju na míru</h3>
-            <p>Intenzitu a přístup přizpůsobím konkrétnímu tělu, ne šabloně z učebnice.</p>
-          </li>
-        </ol>
+        <!-- Sekvence 01→02→03 se vykresluje ve směru čtení (desktop zleva
+             doprava, mobil shora dolů) až ve chvíli, kdy sekce vjede do
+             viewportu — flow-line doslova kreslí průběh metody a pulz po ní
+             putuje jako „najdi a povol“ v pohybu. Zvýraznění kroku reaguje na
+             najetí myší i na klepnutí (viz processSequence() ve script.js).
+             Bez JS i s prefers-reduced-motion je vše rovnou staticky viditelné. -->
+        <div class="process" data-process>
+          <div class="process__track" aria-hidden="true">
+            <span class="process__track-fill"></span>
+            <span class="process__pulse"></span>
+          </div>
+
+          <ol class="process__steps">
+            <li class="process__step" style="--step-index: 0">
+              <span class="process__num" aria-hidden="true">01</span>
+              <h3>Najdu blokádu</h3>
+              <p>Palpací najdu přesný triggerpoint nebo zkrácený sval, který omezuje pohyb.</p>
+            </li>
+            <li class="process__step" style="--step-index: 1">
+              <span class="process__num" aria-hidden="true">02</span>
+              <h3>Uvolním trakcí</h3>
+              <p>Kombinace trakčně-tlakové techniky a měkkých technik podle toho, co bolístka potřebuje.</p>
+            </li>
+            <li class="process__step" style="--step-index: 2">
+              <span class="process__num" aria-hidden="true">03</span>
+              <h3>Ušiju na míru</h3>
+              <p>Intenzitu a přístup přizpůsobím konkrétnímu tělu, ne šabloně z učebnice.</p>
+            </li>
+          </ol>
+        </div>
 
         <blockquote class="filozofie__balance" data-reveal>
           <p>
-            Tělo se přirozeně vychyluje z rovnováhy — některé svaly se
-            zkracují, jiné ochabují. Já tu nerovnováhu najdu a povolím.
-            Udržet ji v rovnováze je ale hlavně vaše práce, ne moje.
+            Tělo se časem přirozeně dostává do nerovnováhy — některé svaly
+            se zkracují, jiné naopak ochabují. Mojí úlohou je tuto nerovnováhu
+            najít a pomoci ji odstranit. Aby ale výsledek vydržel dlouhodobě,
+            je důležité, abyste na svém těle pracovali i vy.
           </p>
           <cite>Tomáš Kestner</cite>
         </blockquote>
 
         <div class="filozofie__cta">
-          <a class="btn btn-secondary" href="#kontakt">Vyzkoušet na vlastní kůži</a>
+          <a class="btn btn-secondary" href="#kontakt">Chci se objednat</a>
         </div>
       </div>
     </section>
@@ -190,15 +212,15 @@
         <div class="o-mne__content">
           <h2 class="section-heading">O mně</h2>
           <p>
-            Masérství dělám od roku 2004 — přes 20 let praxe. Sedm z nich
-            jsem zároveň (ne až potom) staral o hráče FK Mladá Boleslav a
-            souběžně vedl svoje soukromé klienty — obojí najednou, ne jako
-            dvě oddělené fáze kariéry. U fotbalistů jsem se naučil pracovat
-            rychle a přesně — profesionální hráč nemá čas na týden
-            regenerace, potřebuje být zpátky na hřišti hned. Tuhle
-            zkušenost dnes uplatňuju u každého, kdo přijde s bolestí zad,
-            ramen nebo zkráceným svalem. Baví mě najít přesně to místo,
-            které jinde přehlédnou, a rovnou ho vyřešit.
+            Masérství se věnuji od roku 2004, takže mám přes 20 let praxe.
+            Sedm let jsem pečoval o hráče FK Mladá Boleslav a zároveň jsem
+            pracoval se svými soukromými klienty. Práce s profesionálními
+            fotbalisty mě naučila jednat rychle a přesně — hráč nemá čas
+            na dlouhou regeneraci, potřebuje se co nejdříve vrátit na
+            hřiště. Tyto zkušenosti dnes využívám u každého, kdo přijde
+            s bolestí zad, ramen nebo se zkrácenými svaly. Baví mě najít
+            skutečnou příčinu potíží a zaměřit se na místo, které bývá
+            často přehlíženo.
           </p>
 
           <ul class="timeline">
@@ -210,31 +232,46 @@
               <span class="timeline__year">7 let</span>
               <span class="timeline__label">Masér FK Mladá Boleslav — souběžně se soukromými klienty</span>
             </li>
+            <!-- Bez roku: pomlčka na místě letopočtu vypadala jako chybějící data,
+                 proto se u položek bez data span s rokem vůbec nevykresluje. -->
             <li class="timeline__item" data-reveal style="--reveal-index: 2">
-              <span class="timeline__year">—</span>
               <span class="timeline__label">Lektor rekvalifikačních masérských kurzů (ESF)</span>
             </li>
             <li class="timeline__item" data-reveal style="--reveal-index: 3">
-              <span class="timeline__year">—</span>
               <span class="timeline__label">Masáže pro firmy (např. Linet)</span>
             </li>
-            <li class="timeline__item" data-reveal style="--reveal-index: 4">
-              <span class="timeline__year">20+ let</span>
-              <span class="timeline__label">Praxe celkem</span>
-            </li>
           </ul>
+
+          <!-- Souhrn praxe: prostá informační věta pod timeline — jeden font,
+               jedna barva, žádný panel ani akcent. CTA pod ní stojí samostatně,
+               oddělené mezerou, ne součást jednoho vizuálního bloku. Uvnitř
+               .o-mne__content záměrně: v běžném toku sedí přímo pod osou,
+               bez obcházení gridové mezery i bez řazení přes order. -->
+          <div class="praxe-souhrn" data-reveal>
+            <p class="praxe-souhrn__text">20+ let praxe</p>
+
+            <a class="btn btn-primary" href="tel:+420603486737">
+              Objednat masáž
+            </a>
+          </div>
         </div>
 
         <div class="o-mne__media">
-          <!-- TODO: nahradit reálným portrétem Tomáše Kestnera,
-               min. šířka 900px, poměr stran cca 3:4 -->
-          <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: portrét Tomáše Kestnera">
-            <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-              <circle cx="12" cy="13" r="3.5"></circle>
-            </svg>
-            <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: portrét Tomáše Kestnera</p>
-          </div>
+          <!-- Zdroj je nativně 778x1038 = přesně 3:4 poměr .o-mne__media,
+               takže bez ořezu a bez druhé velikosti (blok má max-width 420px).
+               Zjednodušení: 778px je pod původně poptávanými 900px, ale při
+               420px zobrazené šířce to pořád vychází na ~1.85x — upscale by
+               kvalitu jen zhoršil. Až klient dodá větší originál, přegeneruj
+               přes assets/fotky/build_images.py. -->
+          <picture>
+            <source type="image/webp" srcset="assets/img/tomas-kestner-portret.webp">
+            <img
+              class="img-cover"
+              src="assets/img/tomas-kestner-portret.jpg"
+              width="778" height="1038"
+              loading="lazy" decoding="async"
+              alt="Portrét maséra Tomáše Kestnera z Mladé Boleslavi">
+          </picture>
         </div>
       </div>
     </section>
@@ -247,85 +284,93 @@
           <li data-reveal style="--reveal-index: 0">
             <article class="service-card">
               <div class="service-card__media">
-                <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: klasická masáž zad v akci">
-                  <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-                    <circle cx="12" cy="13" r="3.5"></circle>
-                  </svg>
-                  <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: klasická masáž zad v akci</p>
-                </div>
+                <picture>
+                  <source type="image/webp" srcset="assets/img/klasicka-masaz-zad-800.webp">
+                  <img
+                    class="img-cover"
+                    src="assets/img/klasicka-masaz-zad-800.jpg"
+                    width="800" height="500"
+                    loading="lazy" decoding="async"
+                    alt="Tomáš Kestner uvolňuje dlaněmi ztuhlé svaly horní části zad při klasické masáži">
+                </picture>
               </div>
-              <h3>Klasické masáže</h3>
-              <p>Uvolnění ztuhlých zad a ramen po dlouhém sezení u počítače.</p>
-              <p class="service-card__price">1000 Kč / 25 minut</p>
+              <h3><a class="service-card__link" href="sluzby/klasicke-masaze.html">Klasické masáže</a></h3>
+              <p>Uvolnění bolavých zad a ramen po dlouhém sezení u počítače.</p>
+              <p class="service-card__price">1000 Kč / 35 minut</p>
               <div class="service-card__cta-row">
                 <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
-                <a class="service-card__cta service-card__cta--secondary" href="sluzby/klasicke-masaze.html">Zjistit více →</a>
+                <span class="service-card__cta service-card__cta--secondary" aria-hidden="true">Zjistit více →</span>
               </div>
             </article>
           </li>
           <li data-reveal style="--reveal-index: 1">
             <article class="service-card">
               <div class="service-card__media">
-                <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: ruční lymfodrenáž v akci">
-                  <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-                    <circle cx="12" cy="13" r="3.5"></circle>
-                  </svg>
-                  <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: ruční lymfodrenáž v akci</p>
-                </div>
+                <picture>
+                  <source type="image/webp" srcset="assets/img/lymfaticka-masaz-lymfodrenaz-800.webp">
+                  <img
+                    class="img-cover"
+                    src="assets/img/lymfaticka-masaz-lymfodrenaz-800.jpg"
+                    width="800" height="500"
+                    loading="lazy" decoding="async"
+                    alt="Ruční lymfodrenáž dolní končetiny — Tomáš Kestner vede oběma dlaněmi jemné hmaty po stehně">
+                </picture>
               </div>
-              <h3>Lymfatické masáže</h3>
+              <h3><a class="service-card__link" href="sluzby/lymfaticke-masaze.html">Lymfatické masáže</a></h3>
               <p>Ruční lymfodrenáž — úleva od otoků a těžkých nohou, sportovcům zvedá výkonnost až o 10 %.</p>
-              <p class="service-card__price">1000 Kč / 25 minut</p>
+              <p class="service-card__price">1000 Kč / 35 minut</p>
               <div class="service-card__cta-row">
                 <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
-                <a class="service-card__cta service-card__cta--secondary" href="sluzby/lymfaticke-masaze.html">Zjistit více →</a>
+                <span class="service-card__cta service-card__cta--secondary" aria-hidden="true">Zjistit více →</span>
               </div>
             </article>
           </li>
           <li data-reveal style="--reveal-index: 2">
             <article class="service-card">
               <div class="service-card__media">
-                <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: reflexní terapie chodidla">
-                  <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-                    <circle cx="12" cy="13" r="3.5"></circle>
-                  </svg>
-                  <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: reflexní terapie chodidla</p>
-                </div>
+                <picture>
+                  <source type="image/webp" srcset="assets/img/reflexni-terapie-chodidla-800.webp">
+                  <img
+                    class="img-cover"
+                    src="assets/img/reflexni-terapie-chodidla-800.jpg"
+                    width="800" height="500"
+                    loading="lazy" decoding="async"
+                    alt="Reflexní terapie chodidla — Tomáš Kestner tlačí palcem na reflexní bod na plosce nohy">
+                </picture>
               </div>
-              <h3>Reflexní terapie</h3>
-              <p>Tlak na reflexní bod na chodidle rozhýbe konkrétní místo jinde v těle — podle staré čínské nauky o akupunkturních bodech.</p>
-              <p class="service-card__price">1000 Kč / 25 minut</p>
+              <h3><a class="service-card__link" href="sluzby/reflexni-terapie.html">Reflexní terapie</a></h3>
+              <p>Tlakem na reflexní bod na chodidle ovlivním konkrétní místo jinde v těle — podle staré čínské nauky o akupunkturních bodech.</p>
+              <p class="service-card__price">1000 Kč / 35 minut</p>
               <div class="service-card__cta-row">
                 <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
-                <a class="service-card__cta service-card__cta--secondary" href="sluzby/reflexni-terapie.html">Zjistit více →</a>
+                <span class="service-card__cta service-card__cta--secondary" aria-hidden="true">Zjistit více →</span>
               </div>
             </article>
           </li>
           <li data-reveal style="--reveal-index: 3">
             <article class="service-card">
               <div class="service-card__media">
-                <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: měkká a trakční technika v akci">
-                  <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-                    <circle cx="12" cy="13" r="3.5"></circle>
-                  </svg>
-                  <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: měkká a trakční technika v akci</p>
-                </div>
+                <picture>
+                  <source type="image/webp" srcset="assets/img/mekke-trakcni-techniky-sije-800.webp">
+                  <img
+                    class="img-cover"
+                    src="assets/img/mekke-trakcni-techniky-sije-800.jpg"
+                    width="800" height="500"
+                    loading="lazy" decoding="async"
+                    alt="Měkká technika na šíji — Tomáš Kestner tlakem palce uvolňuje spazmus v trapézovém svalu">
+                </picture>
               </div>
-              <h3>Měkké a trakční techniky</h3>
-              <p>Šetrné uvolnění pro citlivá místa a čerstvá zranění.</p>
-              <p class="service-card__price">1000 Kč / 25 minut</p>
+              <h3><a class="service-card__link" href="sluzby/mekke-trakcni-techniky.html">Měkké a trakční techniky</a></h3>
+              <p>Šetrné uvolnění bolavých a ztuhlých míst.</p>
+              <p class="service-card__price">1000 Kč / 35 minut</p>
               <div class="service-card__cta-row">
                 <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
-                <a class="service-card__cta service-card__cta--secondary" href="sluzby/mekke-trakcni-techniky.html">Zjistit více →</a>
+                <span class="service-card__cta service-card__cta--secondary" aria-hidden="true">Zjistit více →</span>
               </div>
             </article>
           </li>
           <li data-reveal style="--reveal-index: 4">
-            <article class="service-card">
+            <article class="service-card service-card--no-price">
               <div class="service-card__media">
                 <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: aplikace kineziotapingu">
                   <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -335,54 +380,33 @@
                   <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: aplikace kineziotapingu</p>
                 </div>
               </div>
-              <h3>Taping, kineziotaping, crosstaping</h3>
-              <p>Podpora svalu nebo kloubu, která vydrží i při tréninku.</p>
-              <!-- TODO: cena k doplnění od klienta -->
-              <p class="service-card__price">Cena na dotaz</p>
+              <h3><a class="service-card__link" href="sluzby/taping-kineziotaping-crosstaping.html">Taping, kineziotaping, crosstaping</a></h3>
+              <p>Podpora svalu nebo kloubu kineziopáskou, která vydrží i při tréninku.</p>
               <div class="service-card__cta-row">
                 <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
-                <a class="service-card__cta service-card__cta--secondary" href="sluzby/taping-kineziotaping-crosstaping.html">Zjistit více →</a>
+                <span class="service-card__cta service-card__cta--secondary" aria-hidden="true">Zjistit více →</span>
               </div>
             </article>
           </li>
           <li data-reveal style="--reveal-index: 5">
             <article class="service-card">
               <div class="service-card__media">
-                <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: baňkování v akci">
-                  <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-                    <circle cx="12" cy="13" r="3.5"></circle>
-                  </svg>
-                  <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: baňkování v akci</p>
-                </div>
+                <picture>
+                  <source type="image/webp" srcset="assets/img/bankovani-zad-800.webp">
+                  <img
+                    class="img-cover"
+                    src="assets/img/bankovani-zad-800.jpg"
+                    width="800" height="500"
+                    loading="lazy" decoding="async"
+                    alt="Baňkování zad — sada baněk nasazená po celých zádech klienta, Tomáš Kestner přisává pumpičkou další baňku">
+                </picture>
               </div>
-              <h3>Baňkování</h3>
-              <p>Prokrvení a uvolnění hlubokých svalových vrstev.</p>
-              <p class="service-card__price">1000 Kč / 25 minut</p>
+              <h3><a class="service-card__link" href="sluzby/bankovani.html">Baňkování</a></h3>
+              <p>Slouží k prokrvení a uvolnění hlubokých svalových vrstev pomocí baněk.</p>
+              <p class="service-card__price">1000 Kč / 35 minut</p>
               <div class="service-card__cta-row">
                 <a class="service-card__cta" href="tel:+420603486737">Zeptat se →</a>
-                <a class="service-card__cta service-card__cta--secondary" href="sluzby/bankovani.html">Zjistit více →</a>
-              </div>
-            </article>
-          </li>
-          <li data-reveal style="--reveal-index: 6">
-            <article class="service-card service-card--featured">
-              <span class="service-card__badge">Čt + Pá</span>
-              <div class="service-card__media">
-                <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: partnerská masáž">
-                  <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-                    <circle cx="12" cy="13" r="3.5"></circle>
-                  </svg>
-                  <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: partnerská masáž</p>
-                </div>
-              </div>
-              <h3>Partnerské masáže</h3>
-              <p>Masáž ve dvou, vedle sebe, jako společný zážitek.</p>
-              <p class="service-card__price">1900 Kč / 60 minut</p>
-              <div class="service-card__cta-row">
-                <a class="service-card__cta" href="tel:+420603486737">Objednat →</a>
-                <a class="service-card__cta service-card__cta--secondary" href="sluzby/partnerske-masaze.html">Zjistit více →</a>
+                <span class="service-card__cta service-card__cta--secondary" aria-hidden="true">Zjistit více →</span>
               </div>
             </article>
           </li>
@@ -395,9 +419,8 @@
         <div class="poukazy__content" data-reveal>
           <h2 class="section-heading">Dárkové poukazy</h2>
           <p>
-            Nevíte, jaký dárek vybrat? Dárkový poukaz na masáž funguje na
-            libovolnou hodnotu — vybere si sám příjemce, na kterou službu ho
-            uplatní.
+            Nevíte, jaký dárek vybrat? Poukaz vystavím buď na konkrétní částku,
+            nebo na počet masáží — a službu si vybere sám příjemce.
           </p>
           <div class="poukazy__cta">
             <a class="btn btn-primary" href="tel:+420603486737">Zeptat se na poukaz</a>
@@ -405,100 +428,267 @@
           </div>
         </div>
 
-        <div class="poukazy__voucher" aria-hidden="true" data-reveal>
-          <span class="poukazy__voucher-label">Dárkový poukaz</span>
-          <span class="poukazy__voucher-value">V libovolné hodnotě</span>
+        <!-- Obě reálné varianty poukazu vedle sebe v jednom slotu — klient hned
+             vidí, co dostane, a že si může vybrat mezi částkou a počtem masáží. -->
+        <div class="poukazy__vouchers" data-reveal>
+          <figure class="poukazy__voucher">
+            <picture>
+              <source type="image/webp" srcset="assets/img/darkovy-poukaz-na-castku.webp">
+              <img
+                src="assets/img/darkovy-poukaz-na-castku.jpg"
+                width="902" height="590"
+                loading="lazy" decoding="async"
+                alt="Dárkový poukaz na masáž vystavený na částku 1000 Kč — Tomáš Kestner, Na Radouči 1042, Mladá Boleslav">
+            </picture>
+            <figcaption>Na částku</figcaption>
+          </figure>
+          <figure class="poukazy__voucher">
+            <picture>
+              <source type="image/webp" srcset="assets/img/darkovy-poukaz-na-pocet-masazi.webp">
+              <img
+                src="assets/img/darkovy-poukaz-na-pocet-masazi.jpg"
+                width="902" height="590"
+                loading="lazy" decoding="async"
+                alt="Dárkový poukaz na masáž vystavený na 1× masáž — Tomáš Kestner, Na Radouči 1042, Mladá Boleslav">
+            </picture>
+            <figcaption>Na počet masáží</figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
     <!--
-      TODO: Až Tomáš dodá reálné reference od klientů (přesné znění citace +
-      jméno/iniciála příjmení dle souhlasu s GDPR), nahradit tuto sekci
-      citacemi podle .claude/skills/reference/SKILL.md. Do té doby stojí
-      sekce jen na ověřitelných faktech z CLAUDE.md — žádná citace ani
-      hodnocení klienta není vymyšlené.
+      REFERENCE — prázdné sloty k postupnému doplnění reálnými citacemi klientů.
+
+      JAK DOPLNIT JEDNU REFERENCI: nahraď celý <li> s kartou
+      .reference-card--placeholder tímhle blokem (--reveal-index nech takový,
+      jaký na daném slotu už je):
+
+      <li data-reveal style="--reveal-index: 0">
+        <figure class="reference-card">
+          <blockquote class="reference-card__quote">
+            <p>Přesné znění citace tak, jak ji klient napsal.</p>
+          </blockquote>
+          <figcaption class="reference-card__meta">
+            <span class="reference-card__author">Jméno P.</span>
+            <span class="reference-card__context">Klasická masáž zad</span>
+          </figcaption>
+        </figure>
+      </li>
+
+      PRAVIDLA (.claude/skills/reference/SKILL.md — porušení zabíjí důvěru
+      v celý web):
+      - Nic nevymýšlet: ani citaci, ani jméno, ani typ masáže. Znění
+        nezkracovat způsobem, který mění význam.
+      - Jméno ve formátu „Jméno P." (GDPR); celé příjmení jen s výslovným
+        souhlasem klienta.
+      - <span class="reference-card__context"> je volitelný — když klient
+        nedodá typ masáže, celý span vynech.
+      - Recenze z Google/Facebooku přepisovat doslovně.
+      - PŘED OSTRÝM NASAZENÍM smaž zbylé nevyplněné sloty. Sekce plná
+        prázdných dlaždic působí hůř než žádná sekce; smysl dává od 2–3
+        reálných referencí.
     -->
-    <section id="reference" class="zkusenosti">
+    <section id="reference" class="reference">
       <div class="container">
-        <h2 class="section-heading">Zkušenosti</h2>
-        <p class="zkusenosti__intro">
-          Recenze klientů zatím sbíráme. Než tu budou, mluví za Tomáše
-          aspoň tahle fakta.
+        <h2 class="section-heading">Reference</h2>
+        <p class="reference__intro">
+          Slova klientů po masáži. Doplňujeme je průběžně — každá reference
+          je od reálného klienta.
         </p>
 
-        <ul class="stats-grid">
+        <ul class="reference-grid">
           <li data-reveal style="--reveal-index: 0">
-            <article class="stat-card">
-              <span class="stat-card__value">7 let</span>
-              <span class="stat-card__label">Masér FK Mladá Boleslav — profesionální fotbalový klub</span>
-            </article>
+            <div class="reference-card reference-card--placeholder">
+              <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
+                <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
+              </svg>
+              <p class="reference-card__placeholder-caption">REFERENCE K DOPLNĚNÍ 1</p>
+            </div>
           </li>
           <li data-reveal style="--reveal-index: 1">
-            <article class="stat-card">
-              <span class="stat-card__value">20+ let</span>
-              <span class="stat-card__label">Praxe od roku 2004 — soukromí klienti souběžně s FK Mladá Boleslav</span>
-            </article>
+            <div class="reference-card reference-card--placeholder">
+              <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
+                <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
+              </svg>
+              <p class="reference-card__placeholder-caption">REFERENCE K DOPLNĚNÍ 2</p>
+            </div>
           </li>
           <li data-reveal style="--reveal-index: 2">
-            <article class="stat-card">
-              <span class="stat-card__value">Lektor</span>
-              <span class="stat-card__label">Rekvalifikačních masérských kurzů (ESF)</span>
-            </article>
+            <div class="reference-card reference-card--placeholder">
+              <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
+                <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
+              </svg>
+              <p class="reference-card__placeholder-caption">REFERENCE K DOPLNĚNÍ 3</p>
+            </div>
           </li>
           <li data-reveal style="--reveal-index: 3">
-            <article class="stat-card">
-              <span class="stat-card__value">Firmy</span>
-              <span class="stat-card__label">Masáže pro firmy, např. Linet</span>
-            </article>
+            <div class="reference-card reference-card--placeholder">
+              <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
+                <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
+              </svg>
+              <p class="reference-card__placeholder-caption">REFERENCE K DOPLNĚNÍ 4</p>
+            </div>
+          </li>
+          <li data-reveal style="--reveal-index: 4">
+            <div class="reference-card reference-card--placeholder">
+              <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
+                <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
+              </svg>
+              <p class="reference-card__placeholder-caption">REFERENCE K DOPLNĚNÍ 5</p>
+            </div>
+          </li>
+          <li data-reveal style="--reveal-index: 5">
+            <div class="reference-card reference-card--placeholder">
+              <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
+                <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
+              </svg>
+              <p class="reference-card__placeholder-caption">REFERENCE K DOPLNĚNÍ 6</p>
+            </div>
           </li>
         </ul>
       </div>
     </section>
 
-    <!-- TODO: nahradit všechny dlaždice reálnými fotkami provozovny a práce
-         Tomáše — min. šířka 1200px, formát 4:3 nebo 1:1, WebP + JPG fallback.
-         Zjednodušení: dlaždice teď používají prostý <img src="*.svg">, protože
-         jde o vektorové zástupné grafiky (WebP/JPG fallback pro ně nedává
-         smysl). Až přibudou reálné fotky, nahraď <img> za <picture> se
-         <source type="image/webp"> + JPG fallback dle .claude/skills/galerie. -->
+    <!-- TODO: chybí už jen fotka kineziotapingu (poslední dlaždice) — klient
+         zatím žádnou nedodal, proto zůstává .photo-placeholder. Až dorazí,
+         projít stejným ořezem přes assets/fotky/build_images.py (1:1, 480w
+         + 1000w) a nahradit placeholder stejným <picture> blokem jako ostatní. -->
     <section id="galerie" class="galerie">
       <div class="container">
         <h2 class="section-heading">Galerie</h2>
         <p class="galerie__intro">
-          Provozovna a technika „najdi a povol" v akci — bez stock fotek,
+          Provozovna a technika „najdi a povol“ v akci — bez stock fotek,
           jen reálné prostředí.
         </p>
 
-        <!-- Dlaždice zatím nemají reálnou fotku, proto jsou to obyčejné <div>y
-             s .photo-placeholder, ne <button> — lightbox (viz script.js) je
-             ignoruje, dokud nedostanou skutečný <img>. Až přibudou reálné
-             fotky: obalit .photo-placeholder zpět do <button class="gallery-item">
-             s <img> (WebP + JPG fallback přes <picture>, min. šířka 1200px,
-             poměr 4:3 nebo 1:1), lightbox se zapojí automaticky. -->
+        <!-- Reálné fotky z provozovny (zdroje v assets/fotky/galerie, ořez a
+             převod řeší assets/fotky/build_images.py). Dlaždice jsou <button>,
+             aby šly otevřít v lightboxu i z klávesnice; data-full drží největší
+             WebP variantu, kterou lightbox zobrazí místo zmenšeniny z dlaždice.
+             sizes odpovídá gridu: 2 sloupce do 768px, pak 3 sloupce v 1200px
+             containeru. -->
         <ul class="gallery-grid">
           <li>
-            <div class="gallery-item gallery-item--placeholder">
-              <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: provozovna Na Radouči 1042">
-                <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-                  <circle cx="12" cy="13" r="3.5"></circle>
-                </svg>
-                <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: provozovna Na Radouči 1042</p>
-              </div>
-            </div>
+            <button class="gallery-item" type="button" aria-label="Zvětšit fotku: vchod do provozovny Na Radouči 1042">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="assets/img/provozovna-na-radouci-1042-480.webp 480w,
+                          assets/img/provozovna-na-radouci-1042-1000.webp 1000w"
+                  sizes="(min-width: 1200px) 363px, (min-width: 768px) 31vw, 45vw">
+                <img
+                  class="img-cover"
+                  src="assets/img/provozovna-na-radouci-1042-1000.jpg"
+                  srcset="assets/img/provozovna-na-radouci-1042-480.jpg 480w,
+                          assets/img/provozovna-na-radouci-1042-1000.jpg 1000w"
+                  sizes="(min-width: 1200px) 363px, (min-width: 768px) 31vw, 45vw"
+                  width="1000" height="1000"
+                  loading="lazy" decoding="async"
+                  data-full="assets/img/provozovna-na-radouci-1042-1000.webp"
+                  data-caption="Provozovna Na Radouči 1042"
+                  alt="Vchod do provozovny masáží Na Radouči 1042 v Mladé Boleslavi s cedulí Tomáš Kestner Masáže">
+              </picture>
+            </button>
           </li>
           <li>
-            <div class="gallery-item gallery-item--placeholder">
-              <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: technika najdi a povol v akci">
-                <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-                  <circle cx="12" cy="13" r="3.5"></circle>
-                </svg>
-                <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: technika najdi a povol v akci</p>
-              </div>
-            </div>
+            <button class="gallery-item" type="button" aria-label="Zvětšit fotku: technika najdi a povol v akci">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="assets/img/najdi-a-povol-v-akci-480.webp 480w,
+                          assets/img/najdi-a-povol-v-akci-1000.webp 1000w"
+                  sizes="(min-width: 1200px) 363px, (min-width: 768px) 31vw, 45vw">
+                <img
+                  class="img-cover"
+                  src="assets/img/najdi-a-povol-v-akci-1000.jpg"
+                  srcset="assets/img/najdi-a-povol-v-akci-480.jpg 480w,
+                          assets/img/najdi-a-povol-v-akci-1000.jpg 1000w"
+                  sizes="(min-width: 1200px) 363px, (min-width: 768px) 31vw, 45vw"
+                  width="1000" height="1000"
+                  loading="lazy" decoding="async"
+                  data-full="assets/img/najdi-a-povol-v-akci-1000.webp"
+                  data-caption="Technika najdi a povol v akci"
+                  alt="Tomáš Kestner uvolňuje prsty spoušťový bod na noze klienta technikou najdi a povol">
+              </picture>
+            </button>
           </li>
+          <li>
+            <button class="gallery-item" type="button" aria-label="Zvětšit fotku: baňkování zad">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="assets/img/bankovani-v-akci-480.webp 480w,
+                          assets/img/bankovani-v-akci-1000.webp 1000w"
+                  sizes="(min-width: 1200px) 363px, (min-width: 768px) 31vw, 45vw">
+                <img
+                  class="img-cover"
+                  src="assets/img/bankovani-v-akci-1000.jpg"
+                  srcset="assets/img/bankovani-v-akci-480.jpg 480w,
+                          assets/img/bankovani-v-akci-1000.jpg 1000w"
+                  sizes="(min-width: 1200px) 363px, (min-width: 768px) 31vw, 45vw"
+                  width="1000" height="1000"
+                  loading="lazy" decoding="async"
+                  data-full="assets/img/bankovani-v-akci-1000.webp"
+                  data-caption="Baňkování"
+                  alt="Baňky nasazené na zádech klienta, masér přisává další baňku pumpičkou">
+              </picture>
+            </button>
+          </li>
+          <li>
+            <button class="gallery-item" type="button" aria-label="Zvětšit fotku: vybavení masérny">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="assets/img/vybaveni-provozovny-480.webp 480w,
+                          assets/img/vybaveni-provozovny-1000.webp 1000w"
+                  sizes="(min-width: 1200px) 363px, (min-width: 768px) 31vw, 45vw">
+                <img
+                  class="img-cover"
+                  src="assets/img/vybaveni-provozovny-1000.jpg"
+                  srcset="assets/img/vybaveni-provozovny-480.jpg 480w,
+                          assets/img/vybaveni-provozovny-1000.jpg 1000w"
+                  sizes="(min-width: 1200px) 363px, (min-width: 768px) 31vw, 45vw"
+                  width="1000" height="1000"
+                  loading="lazy" decoding="async"
+                  data-full="assets/img/vybaveni-provozovny-1000.webp"
+                  data-caption="Vybavení provozovny"
+                  alt="Masérna Tomáše Kestnera — masážní stůl, masážní židle a certifikáty na stěně">
+              </picture>
+            </button>
+          </li>
+          <li>
+            <button class="gallery-item" type="button" aria-label="Zvětšit fotku: čekárna provozovny">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="assets/img/cekarna-provozovny-480.webp 480w,
+                          assets/img/cekarna-provozovny-1000.webp 1000w"
+                  sizes="(min-width: 1200px) 363px, (min-width: 768px) 31vw, 45vw">
+                <img
+                  class="img-cover"
+                  src="assets/img/cekarna-provozovny-1000.jpg"
+                  srcset="assets/img/cekarna-provozovny-480.jpg 480w,
+                          assets/img/cekarna-provozovny-1000.jpg 1000w"
+                  sizes="(min-width: 1200px) 363px, (min-width: 768px) 31vw, 45vw"
+                  width="1000" height="1000"
+                  loading="lazy" decoding="async"
+                  data-full="assets/img/cekarna-provozovny-1000.webp"
+                  data-caption="Čekárna provozovny"
+                  alt="Čekárna provozovny masáží s recepčním pultem, sedačkou a stolkem">
+              </picture>
+            </button>
+          </li>
+          <!-- Jediná dlaždice bez reálné fotky — klient zatím nedodal snímek
+               kineziotapingu. Zůstává neklikatelný <div> (lightbox ji podle
+               chybějícího <img> přeskočí), aby bylo zjevné, že jde o chybějící
+               obsah, ne o hotovou galerii. -->
           <li>
             <div class="gallery-item gallery-item--placeholder">
               <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: kineziotaping">
@@ -510,53 +700,27 @@
               </div>
             </div>
           </li>
-          <li>
-            <div class="gallery-item gallery-item--placeholder">
-              <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: baňkování">
-                <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-                  <circle cx="12" cy="13" r="3.5"></circle>
-                </svg>
-                <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: baňkování</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="gallery-item gallery-item--placeholder">
-              <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: vybavení provozovny">
-                <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-                  <circle cx="12" cy="13" r="3.5"></circle>
-                </svg>
-                <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: vybavení provozovny</p>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="gallery-item gallery-item--placeholder">
-              <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: čekárna provozovny">
-                <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-                  <circle cx="12" cy="13" r="3.5"></circle>
-                </svg>
-                <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: čekárna provozovny</p>
-              </div>
-            </div>
-          </li>
         </ul>
       </div>
 
       <dialog id="lightbox" class="lightbox" aria-label="Prohlížeč fotek galerie">
         <button id="lightbox-close" class="lightbox__close" type="button" aria-label="Zavřít prohlížeč">✕</button>
         <button id="lightbox-prev" class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Předchozí fotka">‹</button>
-        <img id="lightbox-img" src="" alt="" class="lightbox__img">
+        <!-- Popisek pod fotkou je stejný krátký titulek, jaký nesly zástupné
+             dlaždice; text se bere z data-caption na dlaždici (viz script.js).
+             <figure>/<figcaption> místo prostého <p>, ať je popisek sémanticky
+             svázaný s obrázkem. -->
+        <figure class="lightbox__figure">
+          <img id="lightbox-img" src="" alt="" class="lightbox__img">
+          <figcaption id="lightbox-caption" class="lightbox__caption"></figcaption>
+        </figure>
         <button id="lightbox-next" class="lightbox__nav lightbox__nav--next" type="button" aria-label="Následující fotka">›</button>
       </dialog>
     </section>
 
     <section class="final-cta">
       <div class="container final-cta__inner">
-        <h2>Bolest nepočká. Zavolejte ještě dnes.</h2>
+        <h2>Nečekejte, až se bolest zhorší. Objednejte se ještě dnes.</h2>
         <a class="btn btn-primary btn-large" href="tel:+420603486737">Objednat masáž · 603 486 737</a>
       </div>
     </section>
@@ -595,11 +759,11 @@
         <div class="kontakt__form-wrap">
           <h3>Napište mi</h3>
 
-          <!-- TODO: formulář zatím nemá zvolený backend pro statický hosting
-               (Formspree / Netlify Forms). Než se vybere, JS níže po validaci
-               otevře předvyplněný mailto: — funkční už dnes, ale vyžaduje
-               krok navíc od uživatele. Po výběru hostingu nahradit za
-               skutečné odeslání (fetch POST na endpoint backendu). -->
+          <!-- Odesílá se POSTem na /api/kontakt (Vercel serverless funkce → Resend).
+               Doručení jde výhradně přes Resend na adresu v MAIL_TO na serveru —
+               příjemce nikdy nechodí z prohlížeče. Když odeslání selže, formulář
+               se netváří jako odeslaný a odkryje přímý kontakt (.contact-form__fallback),
+               ať se poptávka neztratí. -->
           <form id="contact-form" class="contact-form" novalidate>
             <label for="cf-name">Jméno</label>
             <input type="text" id="cf-name" name="name" required autocomplete="name">
@@ -613,7 +777,27 @@
             <label for="cf-message">Zpráva</label>
             <textarea id="cf-message" name="message" rows="4" required></textarea>
 
-            <p class="contact-form__status" id="contact-form-status" role="status" aria-live="polite"></p>
+            <!-- Honeypot proti botům: skryté v CSS, mimo tab order, ignorované
+                 čtečkami. Reálný návštěvník ho nikdy nevyplní. -->
+            <div class="contact-form__hp" aria-hidden="true">
+              <label for="cf-website">Nevyplňujte</label>
+              <input type="text" id="cf-website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <!-- Stav i nouzový kontakt jsou v jedné live region, aby čtečka
+                 ohlásila obojí — odkrytí skrytého odstavce mimo live region
+                 by proběhlo potichu. -->
+            <div class="contact-form__feedback" role="status" aria-live="polite">
+              <p class="contact-form__status" id="contact-form-status"></p>
+
+              <!-- Odkryje se jen při selhání odeslání (výpadek Resendu/sítě).
+                   Staticky v HTML, ne injektované z JS. -->
+              <p class="contact-form__fallback" id="contact-form-fallback" hidden>
+                Ozvěte se prosím napřímo:
+                <a href="tel:+420603486737">603 486 737</a> nebo
+                <a href="mailto:tomas.kestner@seznam.cz">tomas.kestner@seznam.cz</a>
+              </p>
+            </div>
 
             <button class="btn btn-primary btn-block" type="submit">Odeslat zprávu</button>
           </form>
@@ -635,7 +819,7 @@
       <div class="site-footer__legal">
         <p>IČ: 71037845</p>
         <p>© <span id="footer-year">2026</span> Tomáš Kestner. Všechna práva vyhrazena.</p>
-        <p><a href="sitemap.xml">Mapa webu (sitemap.xml)</a></p>
+        <p class="site-footer__credit">Vyrobeno <a href="https://vizeon.cz" target="_blank" rel="noopener">vizeon.cz</a></p>
       </div>
     </div>
   </footer>

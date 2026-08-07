@@ -26,8 +26,9 @@ Ceny — **potvrzené**:
 - Partnerské masáže: **1900 Kč / 60 minut**, pouze čtvrtek a pátek (uvést časové
   omezení viditelně u ceny, ne jako drobné písmo)
 - Klasické masáže, lymfatické masáže, reflexní terapie, měkké a trakční
-  techniky, baňkování: **1000 Kč / 25 minut** (běžná sazba cca 35-40 Kč/min,
-  paušál platí stejně napříč těmito technikami — potvrzeno klientem 2026-07-21)
+  techniky, baňkování: **1000 Kč / 35 minut** (paušál platí stejně napříč
+  těmito technikami — aktualizováno klientem 2026-08-06, dříve 25 minut;
+  starší orientační sazbu 35-40 Kč/min už neuvádět)
 - Taping, kineziotaping, crosstaping: cena zatím nepotvrzena, zůstává
   "cena na dotaz" (jiný ceníkový model než časový paušál výše)
 

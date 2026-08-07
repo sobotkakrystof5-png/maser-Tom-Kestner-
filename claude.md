@@ -126,12 +126,13 @@ starší formulací kdekoliv v kódu:
 - Reflexní terapie — princip: tlak na reflexní bod (např. na chodidle) ovlivní
   jiné místo/orgán v těle; vychází ze starobylé čínské nauky o akupunkturních
   bodech.
-- Ceník: běžná sazba cca 35-40 Kč/minutu, potvrzený paušál **1000 Kč / 25 minut**
-  platí napříč typy terapie (klasické masáže, lymfatické masáže, reflexní
-  terapie, měkké a trakční techniky, baňkování) — nezáleží na konkrétní
-  technice. Potvrzeno 2026-07-21. Taping/kineziotaping/crosstaping a
-  partnerské masáže mají jiný ceníkový model (u tapingu cena zatím
-  nepotvrzena, u partnerských masáží platí 1900 Kč/60 minut beze změny).
+- Ceník: potvrzený paušál **1000 Kč / 35 minut** platí napříč typy terapie
+  (klasické masáže, lymfatické masáže, reflexní terapie, měkké a trakční
+  techniky, baňkování) — nezáleží na konkrétní technice. Aktualizováno
+  klientem 2026-08-06 (dříve 1000 Kč / 25 minut; starší orientační sazba
+  "35-40 Kč/minutu" tím pozbývá platnosti — neuvádět). Taping/kineziotaping/
+  crosstaping a partnerské masáže mají jiný ceníkový model (u tapingu cena
+  zatím nepotvrzena, u partnerských masáží platí 1900 Kč/60 minut beze změny).
 
 Tech stack — pevně dané
 

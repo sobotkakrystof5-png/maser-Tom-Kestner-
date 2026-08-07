@@ -28,6 +28,44 @@ místech:
 - `sitemap.xml` — všechny `<loc>` záznamy
 - `robots.txt` — řádek `Sitemap:`
 
+## Kontaktní formulář (Resend)
+
+Formulář v `#kontakt` posílá JSON POST na `/api/kontakt` (serverless funkce
+ve `api/kontakt.js`, Node runtime na Vercelu), ta volá REST API Resendu.
+Žádné npm závislosti — volá se přes globální `fetch`, takže web zůstává bez
+build kroku. Příjemce je natvrdo ze serverového prostředí (`MAIL_TO`),
+z prohlížeče nikdy nechodí; `reply_to` je e-mail návštěvníka, takže se dá
+odpovědět přímo z pošty.
+
+Proměnné prostředí (lokálně v `.env.local`, na Vercelu v Project Settings →
+Environment Variables — `.env.local` je v `.gitignore` a nikdy se necommituje):
+
+| Proměnná | Význam |
+|---|---|
+| `RESEND_API_KEY` | API klíč z Resendu. Žije jen na serveru, nikdy v `script.js`. |
+| `MAIL_FROM` | Odesílatel, musí být na doméně ověřené v Resendu (např. `Web Masáže Kestner <web@masazekestner.cz>`). |
+| `MAIL_TO` | Kam chodí poptávky — `tomas.kestner@seznam.cz`. |
+| `RESEND_ALLOW_TEST_SENDER` | Volitelné, jen pro test. `1` povolí odesílání i z `onboarding@resend.dev`. Do produkce nenastavovat. |
+
+**Než se formulář rozjede, je potřeba jeden krok mimo kód:** v Resendu
+ověřit doménu (Domains → Add Domain → DNS záznamy) a `MAIL_FROM` přepsat na
+adresu na ní. Sdílená adresa `onboarding@resend.dev` doručí jen na e-mail
+vlastníka Resend účtu — na `tomas.kestner@seznam.cz` Resend vrátí 200 a
+doručení selže až asynchronně (ověřeno 2026-08-06: `last_event: failed`).
+Proto endpoint dokud je `MAIL_FROM` na testovací adrese vrací 503 a formulář
+místo falešného "odesláno" ukáže chybu s telefonem a e-mailem. Po ověření
+domény se odblokuje sám, bez zásahu do kódu.
+
+Ověření průchodu bez ověřené domény: nastavit `MAIL_TO` na e-mail vlastníka
+Resend účtu a dočasně `RESEND_ALLOW_TEST_SENDER=1`.
+
+Lokální běh se serverless funkcí (samotný `python3 -m http.server` funkce
+neumí):
+
+```bash
+npx vercel dev
+```
+
 ## Kde doplnit reálný obsah (TODO značky v kódu)
 
 Všechna místa jsou označená `<!-- TODO: ... -->` přímo v `index.html`,
@@ -36,13 +74,13 @@ zde je jejich přehled:
 | Co | Kde v kódu | Formát |
 |---|---|---|
 | Fotka hero (Tomáš při masáži) | `#hero` → `.hero__media` (`.photo-placeholder`) | min. šířka 1200px, poměr 4:3, WebP + JPG fallback |
-| Portrét Tomáše | `#o-mne` → `.o-mne__media` (`.photo-placeholder`) | min. šířka 900px, poměr 3:4 |
-| Fotka u každé služby (7×, hlavní stránka + odpovídající podstránka) | `#sluzby-cenik` → `.service-card__media`, a `sluzby/[slug].html` → `.sluzba-detail__media-grid` (2–3 fotky na podstránku) | min. šířka 1200px, poměr 4:3, WebP + JPG fallback |
-| 6 fotek galerie (provozovna, technika, taping, baňkování, vybavení, čekárna) | `#galerie` → `.gallery-grid` | min. šířka 1200px, poměr 4:3 nebo 1:1, WebP + JPG fallback |
-| Cena tapingu/kineziotapingu/crosstapingu | `#sluzby-cenik` a `sluzby/taping-kineziotaping-crosstaping.html` | nahradit text "Cena na dotaz" (jediná nepotvrzená cena — ostatní služby mají potvrzený paušál 1000 Kč/25 min, partnerské masáže 1900 Kč/60 min) |
+| ~~Portrét Tomáše~~ **hotovo** — doplněn, ale zdroj má jen 778px šířky (pod poptávanými 900px) | `#o-mne` → `.o-mne__media` | pokud klient dodá větší originál, přegenerovat; poměr 3:4 |
+| Fotka u služeb — **zbývá taping/kineziotaping/crosstaping a partnerské masáže** (klient je zatím nemá) | `#sluzby-cenik` → `.service-card__media`, a `sluzby/[slug].html` → `.sluzba-detail__media-grid` | min. šířka 1200px, poměr 4:3, WebP + JPG fallback |
+| Galerie — **zbývá 1 z 6 dlaždic: kineziotaping** (5 reálných fotek doplněno) | `#galerie` → `.gallery-grid` (poslední `<li>` s `.photo-placeholder`) | min. šířka 1200px, ořez na 1:1, výstup 480w + 1000w, WebP + JPG fallback |
+| Cena tapingu/kineziotapingu/crosstapingu | `#sluzby-cenik` a `sluzby/taping-kineziotaping-crosstaping.html` | nahradit text "Cena na dotaz" (jediná nepotvrzená cena — ostatní služby mají potvrzený paušál 1000 Kč/35 min, partnerské masáže 1900 Kč/60 min) |
 | Reálné reference klientů | `#reference` (aktuálně sekce "Zkušenosti" na faktech) | přesné znění citace + jméno/iniciála příjmení dle GDPR souhlasu — viz `.claude/skills/reference/SKILL.md` |
 | Otevírací doba | `#kontakt` a JSON-LD v `<head>` | zatím záměrně vynechána (nepotvrzená), nevkládat bez potvrzení od klienta |
-| Formulářový backend | `#kontakt` → `<form id="contact-form">` | zatím `mailto:` fallback (funkční, ale vyžaduje krok navíc od uživatele) — po výběru hostingu nahradit za Formspree/Netlify Forms (fetch POST), viz komentář v `script.js` |
+| Formulářový backend | `#kontakt` → `<form id="contact-form">` | hotovo — POST na `/api/kontakt` → Resend. Zbývá jediný krok mimo kód: ověřit doménu v Resendu a přepsat `MAIL_FROM` (viz "Kontaktní formulář (Resend)" výše) |
 | Google Maps embed | `#kontakt` → `.kontakt__map iframe` | aktuálně bez API klíče (`?q=...&output=embed`) — funkční, ale bez analytiky/oficiální podpory Google |
 
 Chybějící fotky jsou označené komponentou `.photo-placeholder` (výrazný
@@ -58,14 +96,36 @@ s `aria-label`, ať se zapojí do lightboxu (viz `script.js`
 přeskakuje). Favicon/apple-touch-icon/og-image (`assets/icons/`,
 `apple-touch-icon.png`, `og-image.jpg`) zůstávají beze změny.
 
+### Práce s fotkami od klienta
+
+Originály chodí do `assets/fotky/<sluzba>/` — **tahle složka se nenasazuje**,
+je to jen zdroj. Web sahá výhradně do `assets/img/` na odvozené varianty
+(`<slug>-800.webp` + `<slug>-800.jpg`; poukazy a portrét bez `-800`, jedou
+v nativním rozlišení; galerie má dvě šířky `<slug>-480` a `<slug>-1000` kvůli
+`srcset`). Ořezy jsou ruční, ne center-crop — u karet na homepage 16:10
+(`.service-card__media`), na podstránkách 4:3 (`.sluzba-detail__media-grid`),
+v galerii 1:1 (`.gallery-item`).
+Převod dělá Pillow (`Image.crop` + `resize(LANCZOS)`, JPEG q78 / WebP q74);
+`cwebp` ani ImageMagick v tomhle prostředí nejsou.
+
 ## Známá zjednodušení (transparentně, ne skrytě)
 
-- Gallery placeholder dlaždice jsou zatím neklikatelné `<div>`, ne
-  `<button>` — lightbox (`script.js`) je ignoruje, dokud nedostanou
-  skutečný `<img>` (viz TODO komentář v `index.html` u `#galerie`).
-- Kontaktní formulář nemá zvolený hosting-specifický backend, proto zatím
-  "odesílá" přes `mailto:` (otevře e-mailový klient s předvyplněnou
-  zprávou) — funkční už dnes, ale ne plně automatické.
+- V galerii zbývá jedna neklikatelná placeholder dlaždice (kineziotaping) —
+  lightbox (`script.js`) ji ignoruje, protože nemá `<img>`. Zbylých 5 dlaždic
+  je `<button>` s reálnou fotkou a je plně v lightboxu.
+- Lightbox bere zvětšeninu z `data-full` na dlaždici (největší WebP varianta),
+  ne z toho, co `srcset` vybral pro malou dlaždici — jinak by na mobilu
+  zvětšoval 480px zdroj přes celou obrazovku. Popisek pod fotkou jde
+  z `data-caption` (krátký titulek, stejný jaký nesly zástupné dlaždice);
+  bez `data-caption` se `figcaption` schová.
+- Kontaktní formulář odesílá výhradně přes Resend (`/api/kontakt`). Dokud
+  není v Resendu ověřená doména, endpoint záměrně vrací 503 a formulář to
+  přizná — viz sekce o Resendu výše. Falešné "odesláno" by bylo horší než
+  chyba, u které návštěvník zavolá.
+- Brzda proti spamu na endpointu drží počty v paměti běžící serverless
+  instance (5 odeslání / 10 min / IP). Zastaví triviální smyčku a chrání
+  kvótu Resendu, ne distribuovaný útok — na to by byl potřeba sdílený
+  store (KV/Redis) a s ním závislost, kterou tenhle web nemá proč nést.
 - Google Fonts se načítají z CDN (ne self-hosted) — zmírněno
   `preconnect` + neblokujícím `preload`/`onload` vzorem; self-hosting by
   byl další krok, pokud bude potřeba vyždímat poslední ms výkonu.

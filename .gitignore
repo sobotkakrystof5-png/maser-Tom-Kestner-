@@ -1,2 +1,7 @@
 .DS_Store
 .vercel
+
+# Lokální secrets — RESEND_API_KEY apod. Nikdy necommitovat.
+.env
+.env.local
+.env.*.local

@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Baňkování Mladá Boleslav — Tomáš Kestner</title>
-  <meta name="description" content="Baňkování v Mladé Boleslavi — prokrvení a uvolnění hlubokých svalových vrstev. 1000 Kč / 25 minut.">
+  <meta name="description" content="Baňkování v Mladé Boleslavi — prokrvení a uvolnění hlubokých svalových vrstev. 1000 Kč / 35 minut.">
 
   <!-- TODO: nahradit finální doménou při nasazení (canonical, og:url, og:image) -->
   <link rel="canonical" href="https://www.example.com/sluzby/bankovani.html">
 
   <meta property="og:title" content="Baňkování — Tomáš Kestner">
-  <meta property="og:description" content="Prokrvení a uvolnění hlubokých svalových vrstev. 1000 Kč / 25 minut.">
+  <meta property="og:description" content="Prokrvení a uvolnění hlubokých svalových vrstev. 1000 Kč / 35 minut.">
   <meta property="og:image" content="https://www.example.com/og-image.jpg">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="cs_CZ">
@@ -96,25 +96,30 @@
         </p>
 
         <div class="sluzba-detail__media-grid">
-          <!-- TODO: nahradit reálnými fotkami, min. šířka 1200px, poměr 4:3 -->
-          <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: baňkování v akci">
-            <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-              <circle cx="12" cy="13" r="3.5"></circle>
-            </svg>
-            <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: baňkování v akci</p>
-          </div>
-          <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: baňky na zádech">
-            <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-              <circle cx="12" cy="13" r="3.5"></circle>
-            </svg>
-            <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: baňky na zádech</p>
-          </div>
+          <figure>
+            <picture>
+              <source type="image/webp" srcset="../assets/img/bankovani-banky-na-zadech-800.webp">
+              <img
+                src="../assets/img/bankovani-banky-na-zadech-800.jpg"
+                width="800" height="600"
+                loading="lazy" decoding="async"
+                alt="Baňkování zad — nasazené baňky na zádech klienta, Tomáš Kestner přidržuje rukou rameno">
+            </picture>
+          </figure>
+          <figure>
+            <picture>
+              <source type="image/webp" srcset="../assets/img/bankovani-nasazeni-banky-800.webp">
+              <img
+                src="../assets/img/bankovani-nasazeni-banky-800.jpg"
+                width="800" height="600"
+                loading="lazy" decoding="async"
+                alt="Nasazení baňky — Tomáš Kestner přisává pumpičkou baňku na rameno klienta, na zádech je už nasazená celá sada">
+            </picture>
+          </figure>
         </div>
 
         <div class="sluzba-detail__price-cta">
-          <p class="sluzba-detail__price">1000 Kč / 25 minut</p>
+          <p class="sluzba-detail__price">1000 Kč / 35 minut</p>
           <a class="btn btn-primary" href="tel:+420603486737">Objednat · 603 486 737</a>
         </div>
 
@@ -139,7 +144,7 @@
       <div class="site-footer__legal">
         <p>IČ: 71037845</p>
         <p>© <span id="footer-year">2026</span> Tomáš Kestner. Všechna práva vyhrazena.</p>
-        <p><a href="../sitemap.xml">Mapa webu (sitemap.xml)</a></p>
+        <p class="site-footer__credit">Vyrobeno <a href="https://vizeon.cz" target="_blank" rel="noopener">vizeon.cz</a></p>
       </div>
     </div>
   </footer>
