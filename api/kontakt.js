@@ -15,6 +15,18 @@ const MAIL_TO = process.env.MAIL_TO || "tomas.kestner@seznam.cz";
 
 const LIMITS = { name: 100, email: 150, phone: 40, message: 3000 };
 
+// Musí odpovídat hodnotám checkboxů v index.html (.contact-form__services-grid).
+// Whitelist, ne jen escapování — z requestu se do e-mailu nikdy nedostane
+// hodnota, kterou návštěvník do formuláře reálně neposlal.
+const VALID_SERVICES = [
+  "Klasické masáže",
+  "Lymfatické masáže",
+  "Reflexní terapie",
+  "Měkké a trakční techniky",
+  "Taping, kineziotaping, crosstaping",
+  "Baňkování",
+];
+
 // Sdílená testovací adresa Resendu. Doručí jen na e-mail vlastníka Resend účtu,
 // na cizí adresy (tomas.kestner@seznam.cz) selže — viz guard v handleru.
 const RESEND_TEST_SENDER = "onboarding@resend.dev";
@@ -91,6 +103,9 @@ module.exports = async (req, res) => {
   const email = String(body.email || "").trim();
   const phone = String(body.phone || "").trim();
   const message = String(body.message || "").trim();
+  const services = Array.isArray(body.services)
+    ? body.services.filter((s) => VALID_SERVICES.includes(s))
+    : [];
 
   if (!name || !email || !message) {
     return res.status(400).json({ error: "Vyplňte prosím jméno, e-mail a zprávu." });
@@ -146,6 +161,7 @@ module.exports = async (req, res) => {
     `Jméno: ${name}`,
     `E-mail: ${email}`,
     `Telefon: ${phone || "neuvedeno"}`,
+    `Typ služby: ${services.length ? services.join(", ") : "neuvedeno"}`,
     "",
     message,
   ].join("\n");
@@ -155,7 +171,8 @@ module.exports = async (req, res) => {
       <h2 style="margin:0 0 16px;font-size:18px">Nová zpráva z webu</h2>
       <p style="margin:0 0 4px"><strong>Jméno:</strong> ${escapeHtml(name)}</p>
       <p style="margin:0 0 4px"><strong>E-mail:</strong> ${escapeHtml(email)}</p>
-      <p style="margin:0 0 16px"><strong>Telefon:</strong> ${escapeHtml(phone || "neuvedeno")}</p>
+      <p style="margin:0 0 4px"><strong>Telefon:</strong> ${escapeHtml(phone || "neuvedeno")}</p>
+      <p style="margin:0 0 16px"><strong>Typ služby:</strong> ${escapeHtml(services.length ? services.join(", ") : "neuvedeno")}</p>
       <div style="padding:16px;background:#F4F6F2;border-left:3px solid #C9662E;white-space:pre-wrap">${escapeHtml(message)}</div>
     </div>
   `;

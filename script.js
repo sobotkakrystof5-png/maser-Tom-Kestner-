@@ -303,6 +303,7 @@
       name: data.get("name"),
       email: data.get("email"),
       phone: data.get("phone"),
+      services: data.getAll("services"), // checkboxy, víc hodnot pod stejným name
       message: data.get("message"),
       website: data.get("website"), // honeypot — server ho vyhodnotí
     };

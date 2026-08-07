@@ -544,19 +544,6 @@ main[id] {
   text-underline-offset: 3px;
 }
 
-/* Zdrženlivé odlišení odkazu na Dárkové poukazy — jen malá ikonka v akcentové
-   barvě, žádný badge/glow/pill, text stejný jako ostatní položky menu. */
-.site-nav__menu a.site-nav__menu-gift {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.site-nav__gift-icon {
-  color: var(--accent);
-  flex-shrink: 0;
-}
-
 .site-nav__menu-cta {
   margin-top: var(--space-1);
 }
@@ -1741,6 +1728,48 @@ main[id] {
 .contact-form input:invalid:not(:placeholder-shown),
 .contact-form textarea:invalid:not(:placeholder-shown) {
   border-color: var(--error);
+}
+
+.contact-form__services {
+  margin-top: var(--space-2);
+  padding: 0;
+  border: 0;
+}
+
+.contact-form__services legend {
+  padding: 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.contact-form__services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-1) var(--space-2);
+  margin-top: var(--space-1);
+}
+
+@media (min-width: 480px) {
+  .contact-form__services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contact-form__service-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-weight: 400;
+  font-size: 0.9375rem;
+  margin-top: 0;
+  cursor: pointer;
+}
+
+.contact-form__service-option input {
+  width: 1.125rem;
+  height: 1.125rem;
+  accent-color: var(--accent);
+  flex-shrink: 0;
 }
 
 /* Honeypot proti botům — musí zůstat v DOM a být "vyplnitelný" pro bota, ale

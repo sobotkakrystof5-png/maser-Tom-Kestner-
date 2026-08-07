@@ -84,13 +84,6 @@
           <li><a href="#sluzby-cenik">Služby a ceník</a></li>
           <li>
             <a class="site-nav__menu-gift" href="#darkove-poukazy">
-              <svg class="site-nav__gift-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="20 12 20 22 4 22 4 12"></polyline>
-                <rect x="2" y="7" width="20" height="5"></rect>
-                <line x1="12" y1="22" x2="12" y2="7"></line>
-                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
-                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
-              </svg>
               Dárkové poukazy
             </a>
           </li>
@@ -773,6 +766,37 @@
 
             <label for="cf-phone">Telefon (nepovinné)</label>
             <input type="tel" id="cf-phone" name="phone" autocomplete="tel">
+
+            <fieldset class="contact-form__services">
+              <legend>Typ služby (nepovinné, lze vybrat víc)</legend>
+
+              <div class="contact-form__services-grid">
+                <label class="contact-form__service-option">
+                  <input type="checkbox" name="services" value="Klasické masáže">
+                  Klasické masáže
+                </label>
+                <label class="contact-form__service-option">
+                  <input type="checkbox" name="services" value="Lymfatické masáže">
+                  Lymfatické masáže
+                </label>
+                <label class="contact-form__service-option">
+                  <input type="checkbox" name="services" value="Reflexní terapie">
+                  Reflexní terapie
+                </label>
+                <label class="contact-form__service-option">
+                  <input type="checkbox" name="services" value="Měkké a trakční techniky">
+                  Měkké a trakční techniky
+                </label>
+                <label class="contact-form__service-option">
+                  <input type="checkbox" name="services" value="Taping, kineziotaping, crosstaping">
+                  Taping, kineziotaping, crosstaping
+                </label>
+                <label class="contact-form__service-option">
+                  <input type="checkbox" name="services" value="Baňkování">
+                  Baňkování
+                </label>
+              </div>
+            </fieldset>
 
             <label for="cf-message">Zpráva</label>
             <textarea id="cf-message" name="message" rows="4" required></textarea>
