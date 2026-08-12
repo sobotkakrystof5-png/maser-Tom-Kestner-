@@ -427,18 +427,78 @@ main[id] {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-2);
   width: 100%;
 }
 
+/* Logo-lockup: svislá flow-line + dvouřádkový blok (jméno + lokalita/rok).
+   Vejde se do 64px navu — celková výška lockupu ~34px. */
 .site-nav__logo {
   display: flex;
   align-items: center;
-  gap: var(--space-1);
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.05rem;
+  gap: 10px;
   text-decoration: none;
   color: var(--ink);
+  /* flex: none — lockup se nesmí smrsknout na úkor čitelnosti jména. */
+  flex: none;
+}
+
+/* Signaturní flow-line jako značka, ne plocha. */
+.site-nav__logo-mark {
+  flex: none;
+  width: 3px;
+  align-self: stretch;
+  border-radius: 2px;
+  background: var(--flow-line);
+}
+
+.site-nav__logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.site-nav__logo-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+/* "Masér" je profese, ne jméno — nižší váha a tlumená barva, ať jméno drží důraz. */
+.site-nav__logo-role {
+  font-weight: 500;
+  color: var(--ink-soft);
+  transition: color 0.2s ease;
+}
+
+.site-nav__logo-meta {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.7rem;
+  line-height: 1.2;
+  /* Sentence case, bez letter-spacingu/verzálek — "malým písmem" čteno doslova,
+     navíc uppercase+tracking verzi zbytečně rozšiřoval o desítky px a přetékal nav. */
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.site-nav__logo:hover .site-nav__logo-name,
+.site-nav__logo:hover .site-nav__logo-role,
+.site-nav__logo:focus-visible .site-nav__logo-name,
+.site-nav__logo:focus-visible .site-nav__logo-role {
+  /* --accent-deep na --paper = 5.2:1, na text tedy vyhovuje (na rozdíl od --accent). */
+  color: var(--accent-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav__logo-name,
+  .site-nav__logo-role {
+    transition: none;
+  }
 }
 
 /* Hamburger toggle — viditelný jen na mobilu */
@@ -535,6 +595,19 @@ main[id] {
   padding: var(--space-1) 0;
 }
 
+/* Nad 768px je menu vodorovné a sdílí řádek s širším logo-lockupem —
+   bez nowrap/flex-shrink:0 flexbox položky mačká a text se láme doprostřed
+   slova ("Služby a / ceník"), což vypadá rozbitě. Nikdy nesmí zalomit. */
+@media (min-width: 768px) {
+  .site-nav__menu li {
+    flex: none;
+  }
+
+  .site-nav__menu a {
+    white-space: nowrap;
+  }
+}
+
 /* :not(.btn) — CTA "Zavolat" je tlačítko, ne textový odkaz. Bez toho tahle
    specifičtější regle přebije .btn { text-decoration: none } a při hoveru i
    po tapu na mobilu (kde hover stav ulpí) mu pod textem svítí akcentová linka. */
@@ -563,9 +636,25 @@ main[id] {
   color: var(--paper);
 }
 
-@media (min-width: 768px) {
+/* Vodorovné desktopové menu (7 položek + CTA) se s nowrap položkami
+   (viz výše) nevejde na šířku pod 1024px, ani s kompaktním logem — pod touto
+   hranicí by tlačítko a poslední odkazy přetekly stránku vodorovně. Hamburger
+   proto zůstává až do 1024px, ne jen do 768px jako v původním layoutu. */
+@media (min-width: 1024px) {
   .site-nav__toggle {
     display: none;
+  }
+
+  .site-nav__logo {
+    gap: 12px;
+  }
+
+  .site-nav__logo-name {
+    font-size: 1.12rem;
+  }
+
+  .site-nav__logo-meta {
+    font-size: 0.68rem;
   }
 
   .site-nav__nav {
@@ -581,7 +670,11 @@ main[id] {
     flex-direction: row;
     align-items: center;
     padding: 0;
-    gap: var(--space-4);
+    /* Užší rozestup než původní --space-4 — širší logo-lockup jinak tlačí
+       položky na hranu zalomení. .container je shora omezený na
+       --container-max (1200px), takže nad 1280px není žádná další šířka
+       navíc — gap proto zůstává stejný na celé desktopové šíři. */
+    gap: var(--space-3);
   }
 
   .site-nav__menu-cta {
@@ -592,6 +685,40 @@ main[id] {
     width: auto;
     padding: var(--space-1) var(--space-2);
     font-size: 0.9rem;
+  }
+}
+
+/* 1024–1279px: vodorovné menu už běží, ale .container je pořád užší než
+   1280px cíl plného lockupu — kompaktní jednořádkové logo (bez mark/role/
+   meta), stejně jako v původním logu, a užší mezery mezi položkami, ať se
+   CTA tlačítko a poslední odkazy vejdou bez přetečení (na 1024px má reálné
+   písmo Archivo/Inter jen pár px rezervy navíc). */
+@media (min-width: 1024px) and (max-width: 1279.98px) {
+  .site-nav__logo-mark,
+  .site-nav__logo-role,
+  .site-nav__logo-meta {
+    display: none;
+  }
+
+  .site-nav__logo-name {
+    font-size: 1rem;
+  }
+
+  .site-nav__menu {
+    gap: var(--space-2);
+  }
+}
+
+@media (min-width: 1280px) {
+  .site-nav__logo-mark,
+  .site-nav__logo-meta {
+    display: block;
+  }
+
+  /* Inline, ne block — "Masér" sedí uvnitř jednořádkového jména, block by ho
+     shodil na vlastní řádek. */
+  .site-nav__logo-role {
+    display: inline;
   }
 }
 
@@ -674,20 +801,18 @@ main[id] {
   animation: hero-in 0.6s ease both;
 }
 
-.hero__content .section-eyebrow {
+/* Stagger začíná H1 — eyebrow „Mladá Boleslav · Od 2004" je z hero pryč
+   (lokalita zůstává v H1 i v nav logu). */
+.hero__content h1 {
   animation-delay: 0s;
 }
 
-.hero__content h1 {
+.hero__content .hero__subtitle {
   animation-delay: 0.08s;
 }
 
-.hero__content .hero__subtitle {
-  animation-delay: 0.16s;
-}
-
 .hero__content .hero__cta {
-  animation-delay: 0.24s;
+  animation-delay: 0.16s;
 }
 
 @keyframes hero-in {
@@ -1949,8 +2074,12 @@ main[id] {
 
 .site-footer a {
   color: var(--paper);
+  text-decoration: none;
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
   text-decoration: underline;
-  text-decoration-color: var(--accent);
   text-underline-offset: 3px;
 }
 

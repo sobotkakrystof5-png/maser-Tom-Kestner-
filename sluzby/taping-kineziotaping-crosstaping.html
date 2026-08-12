@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Taping, kineziotaping, crosstaping Mladá Boleslav — Tomáš Kestner</title>
-  <meta name="description" content="Taping, kineziotaping a crosstaping v Mladé Boleslavi — podpora svalu nebo kloubu, která vydrží i při tréninku.">
+  <title>Taping, kineziotaping, crosstaping Mladá Boleslav | Tomáš Kestner</title>
+  <meta name="description" content="Taping, kineziotaping a crosstaping v Mladé Boleslavi: podpora svalu nebo kloubu, která vydrží i při tréninku.">
 
   <!-- TODO: nahradit finální doménou při nasazení (canonical, og:url, og:image) -->
   <link rel="canonical" href="https://www.example.com/sluzby/taping-kineziotaping-crosstaping.html">
 
-  <meta property="og:title" content="Taping, kineziotaping, crosstaping — Tomáš Kestner">
+  <meta property="og:title" content="Taping, kineziotaping, crosstaping | Tomáš Kestner">
   <meta property="og:description" content="Podpora svalu nebo kloubu, která vydrží i při tréninku.">
   <meta property="og:image" content="https://www.example.com/og-image.jpg">
   <meta property="og:type" content="website">
@@ -41,8 +41,12 @@
 
   <header class="site-nav" id="site-nav">
     <div class="container site-nav__inner">
-      <a class="site-nav__logo" href="../index.html#hero" aria-label="Tomáš Kestner — masáže, úvod stránky">
-        <span>Tomáš Kestner</span>
+      <a class="site-nav__logo" href="../index.html#hero" aria-label="Masér Tomáš Kestner, masáže Mladá Boleslav, úvod stránky">
+        <span class="site-nav__logo-mark" aria-hidden="true"></span>
+        <span class="site-nav__logo-text">
+          <span class="site-nav__logo-name"><span class="site-nav__logo-role">Masér</span> Tomáš Kestner</span>
+          <span class="site-nav__logo-meta">V Mladé Boleslavi od 2004</span>
+        </span>
       </a>
 
       <button
@@ -86,25 +90,33 @@
         <p class="sluzba-detail__intro">
           Tejpování, kineziotaping a crosstaping jsou techniky nalepení
           speciální pásky, které podpoří sval nebo kloub a zůstanou funkční
-          i při tréninku nebo běžném pohybu — nejde jen o klidovou fixaci.
+          i při tréninku nebo běžném pohybu: nejde jen o klidovou fixaci.
         </p>
 
+        <!-- Obě fotky ukazují aplikaci kineziopásky (zdroje v assets/fotky/kinesiotaping).
+             Původní druhý slot byl popsaný jako „crosstaping v praxi“ — klient ale
+             crosstaping nenafotil, takže popisek odpovídá tomu, co na snímku reálně je. -->
         <div class="sluzba-detail__media-grid">
-          <!-- TODO: nahradit reálnými fotkami, min. šířka 1200px, poměr 4:3 -->
-          <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: aplikace kineziotapingu">
-            <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-              <circle cx="12" cy="13" r="3.5"></circle>
-            </svg>
-            <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: aplikace kineziotapingu</p>
-          </div>
-          <div class="photo-placeholder" role="img" aria-label="FOTO K DOPLNĚNÍ: crosstaping v praxi">
-            <svg class="photo-placeholder__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"></path>
-              <circle cx="12" cy="13" r="3.5"></circle>
-            </svg>
-            <p class="photo-placeholder__caption">FOTO K DOPLNĚNÍ: crosstaping v praxi</p>
-          </div>
+          <figure>
+            <picture>
+              <source type="image/webp" srcset="../assets/img/kineziotaping-aplikace-pasky-800.webp">
+              <img
+                src="../assets/img/kineziotaping-aplikace-pasky-800.jpg"
+                width="800" height="600"
+                loading="lazy" decoding="async"
+                alt="Aplikace kineziotapingu, Tomáš Kestner přikládá růžovou kineziopásku na trapézový sval klientky">
+            </picture>
+          </figure>
+          <figure>
+            <picture>
+              <source type="image/webp" srcset="../assets/img/kineziotaping-nalepeni-pasky-siji-800.webp">
+              <img
+                src="../assets/img/kineziotaping-nalepeni-pasky-siji-800.jpg"
+                width="800" height="600"
+                loading="lazy" decoding="async"
+                alt="Nalepení kineziopásky podél šíje, Tomáš Kestner vede růžovou pásku od krku k lopatce, vedle leží nůžky a zbytek role">
+            </picture>
+          </figure>
         </div>
 
         <div class="sluzba-detail__price-cta">
@@ -124,7 +136,7 @@
   <footer class="site-footer">
     <div class="container site-footer__inner">
       <div>
-        <p class="site-footer__brand">Tomáš Kestner — Masáže</p>
+        <p class="site-footer__brand">Tomáš Kestner - Masáže</p>
         <address>Na Radouči 1042, 293 01 Mladá Boleslav</address>
         <p>
           <a href="tel:+420603486737">603 486 737</a> ·

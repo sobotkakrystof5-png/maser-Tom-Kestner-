@@ -33,6 +33,10 @@ JOBS = [
      "mekke-trakcni-techniky-sije", CARD, (200, 150, 1600, 1025)),
     ("bankovani /bankovani .jpeg",
      "bankovani-zad", CARD, (0, 120, 1600, 1120)),
+    # 1600x1200 → ořez doprava a dolů, ať v kadru zůstane růžová páska na šíji,
+    # modrá podél lopatky i masérovy ruce; horní pruh stropu/závěsu pryč
+    ("kinesiotaping/kinesiotaping 1.jpeg",
+     "kineziotaping-zad-a-sije", CARD, (240, 255, 1600, 1105)),
 
     # ---- podstránky (4:3) ----
     ("klasicka masaz /klasicka masaz .jpeg",
@@ -59,6 +63,14 @@ JOBS = [
      "bankovani-banky-na-zadech", GRID, None),
     ("bankovani /bankovani 3 .jpeg",
      "bankovani-nasazeni-banky", GRID, None),
+
+    # 1600x1200 je nativně přesně 4:3 → jen zmenšení, bez ořezu
+    ("kinesiotaping/kinesiotaping 2 .jpeg",
+     "kineziotaping-aplikace-pasky", GRID, None),
+    # 1200x1600 na výšku → výřez 4:3 posunutý na ruce s páskou; nahoře odpadá
+    # okno s květinami, dole spodní část zad
+    ("kinesiotaping/kinesiotaping 3.jpeg",
+     "kineziotaping-nalepeni-pasky-siji", GRID, (0, 430, 1200, 1330)),
 
     # ---- dárkové poukazy (nativní poměr 902x590, žádný ořez) ----
     ("darkovy poukaz /Poukaz masaz 1ks .png",
@@ -102,6 +114,10 @@ GALLERY_JOBS = [
     # z recepčního pultu zůstává jen hrana
     ("galerie /cekarna provozovny .jpeg",
      "cekarna-provozovny", (400, 0, 1936, 1536)),
+    # 1600x1200 → čtverec 1000px na akci: růžová páska na šíji, modrá přes
+    # rameno i Tomášův profil. Širší ořez by přidal jen palmovou tapetu.
+    ("kinesiotaping/kineziotaping 4 .jpeg",
+     "kineziotaping-v-akci", (420, 180, 1420, 1180)),
 ]
 
 

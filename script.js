@@ -157,9 +157,9 @@
 })();
 
 (function galleryLightbox() {
-  // Jen dlaždice se skutečnou fotkou (<img>) patří do lightboxu — dlaždice
-  // s .photo-placeholder (čeká na reálnou fotku, viz TODO v HTML) nemají co
-  // zvětšovat, zůstávají neklikatelné .gallery-item--placeholder <div>y.
+  // Jen dlaždice se skutečnou fotkou (<img>) patří do lightboxu. Galerie je
+  // teď kompletní, filtr ale zůstává jako pojistka — kdyby přibyl další
+  // .gallery-item--placeholder <div>, lightbox ho sám přeskočí.
   const items = Array.from(document.querySelectorAll(".gallery-item")).filter(
     (item) => item.querySelector("img")
   );
