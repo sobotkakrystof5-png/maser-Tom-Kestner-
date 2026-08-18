@@ -663,6 +663,10 @@ main[id] {
     overflow: visible;
     border-bottom: none;
     background: transparent;
+    /* flex: 1 — nav vyplní zbylou šířku vedle loga, jinak si vezme jen
+       šířku obsahu a space-between na .site-nav__inner ho jako celek
+       odsune až k pravému okraji (velká mezera hned za logem). */
+    flex: 1;
     width: auto;
   }
 
@@ -670,10 +674,11 @@ main[id] {
     flex-direction: row;
     align-items: center;
     padding: 0;
-    /* Užší rozestup než původní --space-4 — širší logo-lockup jinak tlačí
-       položky na hranu zalomení. .container je shora omezený na
-       --container-max (1200px), takže nad 1280px není žádná další šířka
-       navíc — gap proto zůstává stejný na celé desktopové šíři. */
+    width: 100%;
+    /* justify-content rozprostře položky (včetně CTA tlačítka) rovnoměrně
+       přes celou šířku navu; gap drží minimální odstup, kdyby se položky
+       kvůli úzkému containeru přiblížily víc, než je čitelné. */
+    justify-content: space-between;
     gap: var(--space-3);
   }
 
@@ -1685,9 +1690,15 @@ main[id] {
   line-height: 1.4;
   text-align: center;
   max-width: 60ch;
-  /* Šipky prev/next jsou position: fixed u okrajů (48px + odsazení), proto
-     si popisek po stranách nechává místo — jinak by na mobilu tekl pod ně. */
-  padding-inline: calc(48px + var(--space-3));
+}
+
+@media (min-width: 768px) {
+  .lightbox__caption {
+    /* Šipky prev/next jsou position: fixed u okrajů (48px + odsazení), proto
+       si popisek po stranách nechává místo — jinak by tekl pod ně. Na mobilu
+       jsou šipky skryté (viz .lightbox__nav), takže tam odsazení odpadá. */
+    padding-inline: calc(48px + var(--space-3));
+  }
 }
 
 .lightbox__close,
@@ -1735,6 +1746,19 @@ main[id] {
   right: var(--space-3);
   top: 50%;
   transform: translateY(-50%);
+}
+
+/* Na mobilu šipky vypadají jako neforemné kolečko navíc přes fotku — na
+   dotykovém displeji navigaci mezi fotkami nahrazuje swipe (viz script.js).
+   Od 768px, kde je víc místa a chybí gesto, se šipky zase zobrazí. */
+.lightbox__nav {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .lightbox__nav {
+    display: inline-flex;
+  }
 }
 
 /* =========================================================

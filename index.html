@@ -65,7 +65,7 @@
       <a class="site-nav__logo" href="#hero" aria-label="Masér Tomáš Kestner, masáže Mladá Boleslav, úvod stránky">
         <span class="site-nav__logo-mark" aria-hidden="true"></span>
         <span class="site-nav__logo-text">
-          <span class="site-nav__logo-name"><span class="site-nav__logo-role">Masér</span> Tomáš Kestner</span>
+          <span class="site-nav__logo-name"><span class="site-nav__logo-role">Masáže</span> Tomáš Kestner</span>
           <span class="site-nav__logo-meta">V Mladé Boleslavi od 2004</span>
         </span>
       </a>
@@ -253,20 +253,17 @@
         </div>
 
         <div class="o-mne__media">
-          <!-- Zdroj je nativně 778x1038 = přesně 3:4 poměr .o-mne__media,
-               takže bez ořezu a bez druhé velikosti (blok má max-width 420px).
-               Zjednodušení: 778px je pod původně poptávanými 900px, ale při
-               420px zobrazené šířce to pořád vychází na ~1.85x — upscale by
-               kvalitu jen zhoršil. Až klient dodá větší originál, přegeneruj
-               přes assets/fotky/build_images.py. -->
+          <!-- Zdroj 964x1168 oříznut na 876x1168 = přesně 3:4 poměr .o-mne__media
+               (blok má max-width 420px, takže i tak ~2.1x zobrazené šířky).
+               Ořez viz assets/fotky/build_images.py. -->
           <picture>
             <source type="image/webp" srcset="assets/img/tomas-kestner-portret.webp">
             <img
               class="img-cover"
               src="assets/img/tomas-kestner-portret.jpg"
-              width="778" height="1038"
+              width="876" height="1168"
               loading="lazy" decoding="async"
-              alt="Portrét maséra Tomáše Kestnera z Mladé Boleslavi">
+              alt="Tomáš Kestner u masážního stolu ve své provozovně v Mladé Boleslavi">
           </picture>
         </div>
       </div>

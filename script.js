@@ -213,6 +213,27 @@
     if (event.target === dialog) dialog.close();
   });
 
+  // Šipky prev/next jsou pod 768px skryté (viz styles.css) — na dotykovém
+  // displeji jejich roli přebírá swipe doleva/doprava.
+  let touchStartX = 0;
+  dialog.addEventListener(
+    "touchstart",
+    (event) => {
+      touchStartX = event.changedTouches[0].clientX;
+    },
+    { passive: true }
+  );
+  dialog.addEventListener(
+    "touchend",
+    (event) => {
+      const deltaX = event.changedTouches[0].clientX - touchStartX;
+      const SWIPE_THRESHOLD = 40;
+      if (deltaX > SWIPE_THRESHOLD) show(current - 1);
+      else if (deltaX < -SWIPE_THRESHOLD) show(current + 1);
+    },
+    { passive: true }
+  );
+
   dialog.addEventListener("close", () => {
     items[current].focus();
   });

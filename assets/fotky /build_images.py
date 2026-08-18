@@ -79,13 +79,11 @@ JOBS = [
      "darkovy-poukaz-na-pocet-masazi", (902, 590), None),
 
     # ---- portrét do sekce O mně ----
-    # Zdroj je nativně 778x1038 = přesně 3:4 (.o-mne__media), takže se
-    # needituje ani neořezává — jen převod do WebP/JPG v nativním rozlišení.
-    # Pozn.: 778px je pod doporučenými 900px z TODO v index.html, ale při
-    # zobrazené šířce 420px to pořád vychází na ~1.85x — upscale by kvalitu
-    # jen zhoršil, takže zůstává nativ.
-    ("portret tomase kestnera /portret tomase kestner .png",
-     "tomas-kestner-portret", (778, 1038), None),
+    # Zdroj 964x1168 (širší než cílový poměr 3:4 pro .o-mne__media) → ořez
+    # 44px z každé strany na 876x1168, Tomáš zůstává vycentrovaný, obě ruce
+    # na stole i hlavová opěrka v kadru.
+    ("Tomáš Kestner - O mně /tomáš kestner - o mně .png",
+     "tomas-kestner-portret", (876, 1168), (44, 0, 920, 1168)),
 ]
 
 # Galerie na homepage — dlaždice mají aspect-ratio 1/1 (viz .gallery-item).
