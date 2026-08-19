@@ -17,8 +17,6 @@
   <meta property="og:url" content="https://www.example.com/">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -95,7 +93,7 @@
           <li><a href="#galerie">Galerie</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
           <li class="site-nav__menu-cta">
-            <a class="btn btn-primary" href="tel:+420603486737">Zavolat · 603 486 737</a>
+            <a class="btn btn-primary" href="tel:+420603486737">Objednat masáž</a>
           </li>
         </ul>
       </nav>
@@ -253,9 +251,8 @@
         </div>
 
         <div class="o-mne__media">
-          <!-- Zdroj 964x1168 oříznut na 876x1168 = přesně 3:4 poměr .o-mne__media
-               (blok má max-width 420px, takže i tak ~2.1x zobrazené šířky).
-               Ořez viz assets/fotky/build_images.py. -->
+          <!-- Zdroj 1500x2000, nativně přesně 3:4 poměr .o-mne__media, jen
+               zmenšený (bez ořezu) — viz assets/fotky/build_images.py. -->
           <picture>
             <source type="image/webp" srcset="assets/img/tomas-kestner-portret.webp">
             <img
@@ -263,7 +260,7 @@
               src="assets/img/tomas-kestner-portret.jpg"
               width="876" height="1168"
               loading="lazy" decoding="async"
-              alt="Tomáš Kestner u masážního stolu ve své provozovně v Mladé Boleslavi">
+              alt="Portrét Tomáše Kestnera, maséra v Mladé Boleslavi">
           </picture>
         </div>
       </div>
@@ -452,38 +449,6 @@
       </div>
     </section>
 
-    <!--
-      REFERENCE — prázdné sloty k postupnému doplnění reálnými citacemi klientů.
-
-      JAK DOPLNIT JEDNU REFERENCI: nahraď celý <li> s kartou
-      .reference-card--placeholder tímhle blokem (--reveal-index nech takový,
-      jaký na daném slotu už je):
-
-      <li data-reveal style="--reveal-index: 0">
-        <figure class="reference-card">
-          <blockquote class="reference-card__quote">
-            <p>Přesné znění citace tak, jak ji klient napsal.</p>
-          </blockquote>
-          <figcaption class="reference-card__meta">
-            <span class="reference-card__author">Jméno P.</span>
-            <span class="reference-card__context">Klasická masáž zad</span>
-          </figcaption>
-        </figure>
-      </li>
-
-      PRAVIDLA (.claude/skills/reference/SKILL.md — porušení zabíjí důvěru
-      v celý web):
-      - Nic nevymýšlet: ani citaci, ani jméno, ani typ masáže. Znění
-        nezkracovat způsobem, který mění význam.
-      - Jméno ve formátu „Jméno P." (GDPR); celé příjmení jen s výslovným
-        souhlasem klienta.
-      - <span class="reference-card__context"> je volitelný — když klient
-        nedodá typ masáže, celý span vynech.
-      - Recenze z Google/Facebooku přepisovat doslovně.
-      - PŘED OSTRÝM NASAZENÍM smaž zbylé nevyplněné sloty. Sekce plná
-        prázdných dlaždic působí hůř než žádná sekce; smysl dává od 2–3
-        reálných referencí.
-    -->
     <section id="reference" class="reference">
       <div class="container">
         <h2 class="section-heading">Reference</h2>
@@ -491,63 +456,207 @@
           Slova klientů po masáži. Doplňujeme je průběžně. Každá reference
           je od reálného klienta.
         </p>
+      </div>
 
-        <ul class="reference-grid">
-          <li data-reveal style="--reveal-index: 0">
-            <div class="reference-card reference-card--placeholder">
-              <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
-                <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
-              </svg>
-              <p class="reference-card__placeholder-caption">REFERENCE K DOPLNĚNÍ 1</p>
+      <!-- Jména zkrácena na iniciálu příjmení (výchozí formát dle
+           .claude/skills/reference/SKILL.md), dokud klient výslovně
+           nepotvrdí zveřejnění celého příjmení. Citace jsou beze změny
+           významu — jen bez obalujících uvozovek, tu roli přebírá ikona. -->
+      <div class="reference-marquee" data-reveal>
+        <svg class="sr-only" aria-hidden="true">
+          <symbol id="icon-reference-star" viewBox="0 0 24 24">
+            <path d="M12 2.5l2.86 6.36 6.94.66-5.26 4.6 1.58 6.88L12 17.6l-6.12 3.4 1.58-6.88-5.26-4.6 6.94-.66z"></path>
+          </symbol>
+        </svg>
+
+        <button type="button" class="reference-marquee__arrow reference-marquee__arrow--prev" aria-controls="reference-track" aria-label="Předchozí reference">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M15 18l-6-6 6-6"></path>
+          </svg>
+        </button>
+
+        <ul class="reference-track" id="reference-track">
+          <li>
+            <div class="reference-card">
+              <div class="reference-card__head">
+                <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
+                  <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
+                </svg>
+                <div class="reference-card__rating" role="img" aria-label="Hodnocení 5 z 5 hvězdiček">
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                </div>
+              </div>
+              <p class="reference-card__quote">Pokud hledáte někoho, kdo vám skutečně pomůže od bolesti a nespokojí se s povrchním řešením, Tomáš Kestner je jasná volba. Já sám jsem se po této zkušenosti stal jeho pravidelným klientem a vřele ho doporučuji všem!</p>
+              <div class="reference-card__meta">
+                <p class="reference-card__author">Richard S.</p>
+              </div>
             </div>
           </li>
-          <li data-reveal style="--reveal-index: 1">
-            <div class="reference-card reference-card--placeholder">
-              <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
-                <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
-              </svg>
-              <p class="reference-card__placeholder-caption">REFERENCE K DOPLNĚNÍ 2</p>
+          <li>
+            <div class="reference-card">
+              <div class="reference-card__head">
+                <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
+                  <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
+                </svg>
+                <div class="reference-card__rating" role="img" aria-label="Hodnocení 5 z 5 hvězdiček">
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                </div>
+              </div>
+              <p class="reference-card__quote">Mám náročnou práci, kde celý den stojím ve strnulé poloze, a časté bolesti kolem lopatky jsem na doporučení začala řešit u pana Kestnera. Mohu ho všem jen doporučit – je to naprostý profesionál, který přesně ví, co dělá, a dokáže opravdu pomoci!</p>
+              <div class="reference-card__meta">
+                <p class="reference-card__author">Mgr. Zina L.</p>
+              </div>
             </div>
           </li>
-          <li data-reveal style="--reveal-index: 2">
-            <div class="reference-card reference-card--placeholder">
-              <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
-                <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
-              </svg>
-              <p class="reference-card__placeholder-caption">REFERENCE K DOPLNĚNÍ 3</p>
+          <li>
+            <div class="reference-card">
+              <div class="reference-card__head">
+                <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
+                  <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
+                </svg>
+                <div class="reference-card__rating" role="img" aria-label="Hodnocení 5 z 5 hvězdiček">
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                </div>
+              </div>
+              <p class="reference-card__quote">Tomáše prostě musíte zažít. Fyzio masáž má v malíku – přesně ví, kam sáhnout, i když to člověku někdy vyrazí dech (jasně, trochu to bolí, ale za tu úlevu to stojí desetkrát). Odejdete jako nový člověk, ať přijdete s čímkoliv. A k tomu všemu je to prostě fajn parťák, se kterým si člověk rád popovídá mezi tím skuhráním 😄 Rozhodně doporučuju, pokud hledáte někoho, kdo vám pomůže dát tělo zase dohromady.</p>
+              <div class="reference-card__meta">
+                <p class="reference-card__author">Katka</p>
+              </div>
             </div>
           </li>
-          <li data-reveal style="--reveal-index: 3">
-            <div class="reference-card reference-card--placeholder">
-              <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
-                <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
-              </svg>
-              <p class="reference-card__placeholder-caption">REFERENCE K DOPLNĚNÍ 4</p>
+          <li>
+            <div class="reference-card">
+              <div class="reference-card__head">
+                <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
+                  <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
+                </svg>
+                <div class="reference-card__rating" role="img" aria-label="Hodnocení 5 z 5 hvězdiček">
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                </div>
+              </div>
+              <p class="reference-card__quote">Skvělý masér, profesionální přístup a příjemná atmosféra. Masáž byla opravdu perfektní a odcházel jsem maximálně spokojený a krásně uvolněný. Určitě doporučuji a rád se vrátím! 👍</p>
+              <div class="reference-card__meta">
+                <p class="reference-card__author">Jarda</p>
+              </div>
             </div>
           </li>
-          <li data-reveal style="--reveal-index: 4">
-            <div class="reference-card reference-card--placeholder">
-              <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
-                <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
-              </svg>
-              <p class="reference-card__placeholder-caption">REFERENCE K DOPLNĚNÍ 5</p>
+
+          <!-- Přesná kopie 4 karet výše (aria-hidden, mimo přirozený tok pro
+               čtečky) — díky ní může autoplay v script.js nekonečně
+               scrollovat doprava: jakmile scrollLeft přejde přes šířku
+               první sady, tichým skokem se vrátí zpět, a protože je vidět
+               identický obsah, skok je vizuálně neznatelný. -->
+          <li aria-hidden="true">
+            <div class="reference-card">
+              <div class="reference-card__head">
+                <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
+                  <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
+                </svg>
+                <div class="reference-card__rating">
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                </div>
+              </div>
+              <p class="reference-card__quote">Pokud hledáte někoho, kdo vám skutečně pomůže od bolesti a nespokojí se s povrchním řešením, Tomáš Kestner je jasná volba. Já sám jsem se po této zkušenosti stal jeho pravidelným klientem a vřele ho doporučuji všem!</p>
+              <div class="reference-card__meta">
+                <p class="reference-card__author">Richard S.</p>
+              </div>
             </div>
           </li>
-          <li data-reveal style="--reveal-index: 5">
-            <div class="reference-card reference-card--placeholder">
-              <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
-                <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
-              </svg>
-              <p class="reference-card__placeholder-caption">REFERENCE K DOPLNĚNÍ 6</p>
+          <li aria-hidden="true">
+            <div class="reference-card">
+              <div class="reference-card__head">
+                <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
+                  <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
+                </svg>
+                <div class="reference-card__rating">
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                </div>
+              </div>
+              <p class="reference-card__quote">Mám náročnou práci, kde celý den stojím ve strnulé poloze, a časté bolesti kolem lopatky jsem na doporučení začala řešit u pana Kestnera. Mohu ho všem jen doporučit – je to naprostý profesionál, který přesně ví, co dělá, a dokáže opravdu pomoci!</p>
+              <div class="reference-card__meta">
+                <p class="reference-card__author">Mgr. Zina L.</p>
+              </div>
+            </div>
+          </li>
+          <li aria-hidden="true">
+            <div class="reference-card">
+              <div class="reference-card__head">
+                <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
+                  <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
+                </svg>
+                <div class="reference-card__rating">
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                </div>
+              </div>
+              <p class="reference-card__quote">Tomáše prostě musíte zažít. Fyzio masáž má v malíku – přesně ví, kam sáhnout, i když to člověku někdy vyrazí dech (jasně, trochu to bolí, ale za tu úlevu to stojí desetkrát). Odejdete jako nový člověk, ať přijdete s čímkoliv. A k tomu všemu je to prostě fajn parťák, se kterým si člověk rád popovídá mezi tím skuhráním 😄 Rozhodně doporučuju, pokud hledáte někoho, kdo vám pomůže dát tělo zase dohromady.</p>
+              <div class="reference-card__meta">
+                <p class="reference-card__author">Katka</p>
+              </div>
+            </div>
+          </li>
+          <li aria-hidden="true">
+            <div class="reference-card">
+              <div class="reference-card__head">
+                <svg class="reference-card__quote-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2H4"></path>
+                  <path d="M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a2 2 0 0 1-2 2h-1"></path>
+                </svg>
+                <div class="reference-card__rating">
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                  <svg class="reference-card__star" aria-hidden="true"><use href="#icon-reference-star"></use></svg>
+                </div>
+              </div>
+              <p class="reference-card__quote">Skvělý masér, profesionální přístup a příjemná atmosféra. Masáž byla opravdu perfektní a odcházel jsem maximálně spokojený a krásně uvolněný. Určitě doporučuji a rád se vrátím! 👍</p>
+              <div class="reference-card__meta">
+                <p class="reference-card__author">Jarda</p>
+              </div>
             </div>
           </li>
         </ul>
+
+        <button type="button" class="reference-marquee__arrow reference-marquee__arrow--next" aria-controls="reference-track" aria-label="Další reference">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 6l6 6-6 6"></path>
+          </svg>
+        </button>
       </div>
     </section>
 

@@ -79,11 +79,11 @@ JOBS = [
      "darkovy-poukaz-na-pocet-masazi", (902, 590), None),
 
     # ---- portrét do sekce O mně ----
-    # Zdroj 964x1168 (širší než cílový poměr 3:4 pro .o-mne__media) → ořez
-    # 44px z každé strany na 876x1168, Tomáš zůstává vycentrovaný, obě ruce
-    # na stole i hlavová opěrka v kadru.
-    ("Tomáš Kestner - O mně /tomáš kestner - o mně .png",
-     "tomas-kestner-portret", (876, 1168), (44, 0, 920, 1168)),
+    # Zdroj 1500x2000 je nativně přesně 3:4 (.o-mne__media) → jen zmenšení,
+    # bez ořezu. Portrétní headshot (ne akční záběr u stolu) — proto zdroj
+    # ze složky "portret tomase kestnera", ne "Tomáš Kestner - O mně".
+    ("portret tomase kestnera /portret tomase kestner .jpeg",
+     "tomas-kestner-portret", (876, 1168), None),
 ]
 
 # Galerie na homepage — dlaždice mají aspect-ratio 1/1 (viz .gallery-item).

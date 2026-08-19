@@ -647,6 +647,9 @@ main[id] {
 
   .site-nav__logo {
     gap: 12px;
+    /* Bez toho sedí lockup hned vedle prvního odkazu menu (Filozofie) —
+       jen base gap 16px z .site-nav__inner nestačí na vizuální oddech. */
+    margin-right: var(--space-3);
   }
 
   .site-nav__logo-name {
@@ -1486,28 +1489,104 @@ main[id] {
   margin-bottom: var(--space-4);
 }
 
-.reference-grid {
-  display: grid;
-  grid-template-columns: 1fr;
+/* Karuselový pás: v script.js se nekonečně sám pomalu posouvá doprava
+   (autoplay přes requestAnimationFrame), dokud návštěvník nezasáhne
+   myší/touchem/klávesou/šipkou — pak se na chvíli zastaví. Karty jsou
+   v markupu 2x (viz index.html), takže smyčka nemá viditelný konec.
+   Bez scroll-snap: rAF a CSS scroll-snap by si navzájem přetahovaly
+   scrollLeft (snap by po každém drobném kroku autoplaye pás vracel zpátky
+   na nejbližší kartu), takže se karty zarovnávají jen vizuálně přes gap. */
+.reference-marquee {
+  position: relative;
+  margin-top: var(--space-4);
+}
+
+.reference-track {
+  display: flex;
   gap: var(--space-3);
+  overflow-x: auto;
+  padding-block: 4px;
+  scrollbar-width: none;
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 24px,
+    #000 calc(100% - 24px),
+    transparent
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 24px,
+    #000 calc(100% - 24px),
+    transparent
+  );
 }
 
-@media (min-width: 768px) {
-  .reference-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.reference-track::-webkit-scrollbar {
+  display: none;
 }
 
-@media (min-width: 1024px) {
-  .reference-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+/* Reduced motion nemá zvláštní CSS výjimku: šipky v script.js posouvají
+   pás vždy okamžitě (bez animace) a autoplay se u reduced motion vůbec
+   nespouští. */
+
+.reference-marquee__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid rgba(22, 36, 31, 0.15);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  transform: translateY(-50%);
+}
+
+.reference-marquee__arrow:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.reference-marquee__arrow:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.reference-marquee__arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+.reference-marquee__arrow--prev {
+  left: var(--space-1);
+}
+
+.reference-marquee__arrow--next {
+  right: var(--space-1);
+}
+
+/* flex-shrink: 0 přímo na <li> — bez toho by flexbox karty v přetékajícím
+   pásu stlačoval na min-content místo toho, aby nechal .reference-track
+   scrollovat v plné šířce karet. */
+.reference-track > li {
+  flex-shrink: 0;
 }
 
 .reference-card {
   position: relative;
+  width: min(85vw, 360px);
+  flex-shrink: 0;
   height: 100%;
-  min-height: 180px;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
@@ -1519,11 +1598,29 @@ main[id] {
   border-image: var(--flow-line) 1;
 }
 
+.reference-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
 .reference-card__quote-mark {
   width: 28px;
   height: 28px;
   flex-shrink: 0;
   color: var(--accent);
+}
+
+.reference-card__rating {
+  display: flex;
+  gap: 2px;
+}
+
+.reference-card__star {
+  width: 14px;
+  height: 14px;
+  fill: var(--accent);
 }
 
 .reference-card__quote {
@@ -1552,33 +1649,6 @@ main[id] {
 .reference-card__context {
   font-size: 0.85rem;
   color: var(--ink-soft);
-}
-
-/* Prázdný slot — stejný vizuální jazyk jako .photo-placeholder (šrafa +
-   přerušovaný rám), aby bylo na první pohled jasné, že jde o zástupný
-   obsah, ne o hotovou referenci. Bez flow-line borderu: ta patří jen
-   vyplněné kartě. */
-.reference-card--placeholder {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: repeating-linear-gradient(
-    135deg,
-    rgba(22, 36, 31, 0.05) 0 10px,
-    transparent 10px 20px
-  );
-  border: 2px dashed var(--ink-soft);
-  border-image: none;
-  color: var(--ink-soft);
-}
-
-.reference-card--placeholder .reference-card__quote-mark {
-  color: var(--ink-soft);
-}
-
-.reference-card__placeholder-caption {
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
 }
 
 /* =========================================================

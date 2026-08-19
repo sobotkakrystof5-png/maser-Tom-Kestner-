@@ -239,6 +239,98 @@
   });
 })();
 
+(function referenceCarousel() {
+  // Pás referencí obsahuje karty 2x (reálná sada + přesná kopie, viz
+  // index.html) — autoplay tak může nekonečně scrollovat doprava: jakmile
+  // scrollLeft přejde přes šířku jedné sady (= polovina scrollWidth), tichým
+  // skokem bez animace se vrátí zpět. Díky identickému obsahu je skok
+  // vizuálně neznatelný, ať k němu dojde při autoplay, tažení, nebo klik na
+  // šipku. Šipky navíc dovolí referencemi listovat ručně.
+  const track = document.getElementById("reference-track");
+  const marquee = document.querySelector(".reference-marquee");
+  const prevBtn = document.querySelector(".reference-marquee__arrow--prev");
+  const nextBtn = document.querySelector(".reference-marquee__arrow--next");
+  if (!track || !marquee) return;
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const SPEED = 34; // px/s — pomalé, čitelné tempo (~44 s na jednu sadu karet)
+
+  function groupWidth() {
+    return track.scrollWidth / 2;
+  }
+
+  function cardStep() {
+    const card = track.querySelector("li");
+    if (!card) return track.clientWidth;
+    return card.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || "0");
+  }
+
+  // Jediné místo, které smyčku uzavírá — funguje bez ohledu na to, jestli
+  // scrollLeft posunul autoplay, tažení/swipe, klávesnice, nebo šipka.
+  track.addEventListener(
+    "scroll",
+    () => {
+      const w = groupWidth();
+      if (track.scrollLeft >= w) track.scrollLeft -= w;
+    },
+    { passive: true }
+  );
+
+  let rafId = null;
+  let lastTs = null;
+
+  function tick(ts) {
+    if (lastTs === null) lastTs = ts;
+    track.scrollLeft += (SPEED * (ts - lastTs)) / 1000;
+    lastTs = ts;
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function startAutoplay() {
+    if (reduceMotion || rafId !== null) return;
+    lastTs = null;
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function stopAutoplay() {
+    if (rafId !== null) cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+
+  // Okamžitý skok (bez native scrollBy smooth animace) — ta by se přetahovala
+  // o scrollLeft s wrap-listenerem výše a končila na nepředvídatelné pozici.
+  function goNext() {
+    track.scrollLeft += cardStep();
+  }
+
+  function goPrev() {
+    // scrollLeft nemůže pod 0 → nejdřív tichý skok o šířku jedné sady
+    // doprava (vizuálně stejné, karty jsou duplicitní), teprve pak krok zpět.
+    if (track.scrollLeft - cardStep() < 0) {
+      track.scrollLeft += groupWidth();
+    }
+    track.scrollLeft -= cardStep();
+  }
+
+  prevBtn?.addEventListener("click", () => {
+    stopAutoplay();
+    goPrev();
+  });
+  nextBtn?.addEventListener("click", () => {
+    stopAutoplay();
+    goNext();
+  });
+
+  marquee.addEventListener("mouseenter", stopAutoplay);
+  marquee.addEventListener("mouseleave", startAutoplay);
+  marquee.addEventListener("focusin", stopAutoplay);
+  marquee.addEventListener("focusout", startAutoplay);
+  track.addEventListener("pointerdown", stopAutoplay);
+  track.addEventListener("pointerup", startAutoplay);
+
+  startAutoplay();
+})();
+
 (function footerYear() {
   const el = document.getElementById("footer-year");
   if (el) el.textContent = new Date().getFullYear();
