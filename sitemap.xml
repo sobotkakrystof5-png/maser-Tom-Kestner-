@@ -1,78 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- TODO: nahradit https://www.example.com/ finální doménou při nasazení -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.example.com/</loc>
+    <loc>https://www.masazekestner.cz/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.example.com/#filozofie</loc>
+    <loc>https://www.masazekestner.cz/#filozofie</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.example.com/#o-mne</loc>
+    <loc>https://www.masazekestner.cz/#o-mne</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.example.com/#sluzby-cenik</loc>
+    <loc>https://www.masazekestner.cz/#sluzby-cenik</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.example.com/sluzby/klasicke-masaze.html</loc>
+    <loc>https://www.masazekestner.cz/sluzby/klasicke-masaze.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.example.com/sluzby/lymfaticke-masaze.html</loc>
+    <loc>https://www.masazekestner.cz/sluzby/lymfaticke-masaze.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.example.com/sluzby/reflexni-terapie.html</loc>
+    <loc>https://www.masazekestner.cz/sluzby/reflexni-terapie.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.example.com/sluzby/mekke-trakcni-techniky.html</loc>
+    <loc>https://www.masazekestner.cz/sluzby/mekke-trakcni-techniky.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.example.com/sluzby/taping-kineziotaping-crosstaping.html</loc>
+    <loc>https://www.masazekestner.cz/sluzby/taping-kineziotaping-crosstaping.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.example.com/sluzby/bankovani.html</loc>
+    <loc>https://www.masazekestner.cz/sluzby/bankovani.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.example.com/sluzby/partnerske-masaze.html</loc>
+    <loc>https://www.masazekestner.cz/sluzby/partnerske-masaze.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.example.com/#darkove-poukazy</loc>
+    <loc>https://www.masazekestner.cz/#darkove-poukazy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.example.com/#reference</loc>
+    <loc>https://www.masazekestner.cz/#reference</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.example.com/#galerie</loc>
+    <loc>https://www.masazekestner.cz/#galerie</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.example.com/#kontakt</loc>
+    <loc>https://www.masazekestner.cz/#kontakt</loc>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>

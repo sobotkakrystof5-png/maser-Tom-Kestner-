@@ -17,16 +17,11 @@ libovolný statický hosting:
 - **Forpsi / klasický FTP hosting**: nahrát obsah složky do webroot (`www`
   nebo `public_html`) přes FTP/SFTP.
 
-Po nasazení na finální doménu je potřeba **najít a nahradit**
-`https://www.example.com/` (placeholder doména) reálnou doménou na těchto
-místech:
-
-- `index.html` — `<link rel="canonical">`, `og:url`, `og:image`, JSON-LD
-  `url`/`image`
-- `sluzby/*.html` (7 souborů) — `<link rel="canonical">`, `og:url`,
-  `og:image` v každém (bez JSON-LD, ten je jen na `index.html`)
-- `sitemap.xml` — všechny `<loc>` záznamy
-- `robots.txt` — řádek `Sitemap:`
+Finální doména `https://www.masazekestner.cz/` je dosazená (2026-08-22) na
+všech místech, kde dřív byl placeholder `https://www.example.com/`:
+`index.html` (`<link rel="canonical">`, `og:url`, `og:image`, JSON-LD
+`url`/`image`), `sluzby/*.html` (7 souborů, canonical + og:url + og:image),
+`sitemap.xml` (všechny `<loc>`) a `robots.txt` (`Sitemap:`).
 
 ## Kontaktní formulář (Resend)
 
@@ -47,14 +42,16 @@ Environment Variables — `.env.local` je v `.gitignore` a nikdy se necommituje)
 | `MAIL_TO` | Kam chodí poptávky — `tomas.kestner@seznam.cz`. |
 | `RESEND_ALLOW_TEST_SENDER` | Volitelné, jen pro test. `1` povolí odesílání i z `onboarding@resend.dev`. Do produkce nenastavovat. |
 
-**Než se formulář rozjede, je potřeba jeden krok mimo kód:** v Resendu
-ověřit doménu (Domains → Add Domain → DNS záznamy) a `MAIL_FROM` přepsat na
-adresu na ní. Sdílená adresa `onboarding@resend.dev` doručí jen na e-mail
-vlastníka Resend účtu — na `tomas.kestner@seznam.cz` Resend vrátí 200 a
-doručení selže až asynchronně (ověřeno 2026-08-06: `last_event: failed`).
-Proto endpoint dokud je `MAIL_FROM` na testovací adrese vrací 503 a formulář
-místo falešného "odesláno" ukáže chybu s telefonem a e-mailem. Po ověření
-domény se odblokuje sám, bez zásahu do kódu.
+Doména `masazekestner.cz` je v Resendu ověřená (DKIM/SPF/MX, ověřeno
+2026-08-22) a `MAIL_FROM` na ni ukazuje (`web@masazekestner.cz`) — formulář
+je plně funkční, e-maily se doručují (potvrzeno end-to-end testem,
+`last_event: delivered`). Sdílená adresa `onboarding@resend.dev` by doručila
+jen na e-mail vlastníka Resend účtu — na `tomas.kestner@seznam.cz` by Resend
+vrátil 200, ale doručení by selhalo asynchronně (takhle to fungovalo do
+2026-08-22, viz `last_event: failed` v historii). Proto endpoint dokud by
+`MAIL_FROM` byl na testovací adrese, vrací 503 a formulář to přizná místo
+falešného "odesláno" — tahle pojistka zůstává v kódu jako evergreen ochrana,
+kdyby se doména v budoucnu znovu rozpojila.
 
 Ověření průchodu bez ověřené domény: nastavit `MAIL_TO` na e-mail vlastníka
 Resend účtu a dočasně `RESEND_ALLOW_TEST_SENDER=1`.
@@ -80,7 +77,7 @@ zde je jejich přehled:
 | Cena tapingu/kineziotapingu/crosstapingu | `#sluzby-cenik` a `sluzby/taping-kineziotaping-crosstaping.html` | nahradit text "Cena na dotaz" (jediná nepotvrzená cena — ostatní služby mají potvrzený paušál 1000 Kč/35 min, partnerské masáže 1900 Kč/60 min) |
 | Reálné reference klientů | `#reference` (aktuálně sekce "Zkušenosti" na faktech) | přesné znění citace + jméno/iniciála příjmení dle GDPR souhlasu — viz `.claude/skills/reference/SKILL.md` |
 | Otevírací doba | `#kontakt` a JSON-LD v `<head>` | zatím záměrně vynechána (nepotvrzená), nevkládat bez potvrzení od klienta |
-| Formulářový backend | `#kontakt` → `<form id="contact-form">` | hotovo — POST na `/api/kontakt` → Resend. Zbývá jediný krok mimo kód: ověřit doménu v Resendu a přepsat `MAIL_FROM` (viz "Kontaktní formulář (Resend)" výše) |
+| Formulářový backend | `#kontakt` → `<form id="contact-form">` | hotovo — POST na `/api/kontakt` → Resend, doména ověřená, e-maily se doručují (viz "Kontaktní formulář (Resend)" výše) |
 | Google Maps embed | `#kontakt` → `.kontakt__map iframe` | aktuálně bez API klíče (`?q=...&output=embed`) — funkční, ale bez analytiky/oficiální podpory Google |
 
 Chybějící fotky jsou označené komponentou `.photo-placeholder` (výrazný
@@ -118,10 +115,11 @@ Převod dělá Pillow (`Image.crop` + `resize(LANCZOS)`, JPEG q78 / WebP q74);
   zvětšoval 480px zdroj přes celou obrazovku. Popisek pod fotkou jde
   z `data-caption` (krátký titulek, stejný jaký nesly zástupné dlaždice);
   bez `data-caption` se `figcaption` schová.
-- Kontaktní formulář odesílá výhradně přes Resend (`/api/kontakt`). Dokud
-  není v Resendu ověřená doména, endpoint záměrně vrací 503 a formulář to
-  přizná — viz sekce o Resendu výše. Falešné "odesláno" by bylo horší než
-  chyba, u které návštěvník zavolá.
+- Kontaktní formulář odesílá výhradně přes Resend (`/api/kontakt`). Doména
+  je ověřená a e-maily se doručují (viz sekce o Resendu výše). Guard, který
+  by endpoint zablokoval, kdyby `MAIL_FROM` znovu skončil na testovací
+  adrese, zůstává v kódu jako evergreen pojistka — falešné "odesláno" by
+  bylo horší než chyba, u které návštěvník zavolá.
 - Brzda proti spamu na endpointu drží počty v paměti běžící serverless
   instance (5 odeslání / 10 min / IP). Zastaví triviální smyčku a chrání
   kvótu Resendu, ne distribuovaný útok — na to by byl potřeba sdílený
